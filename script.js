@@ -184,3 +184,21 @@ window.addEventListener('click', function(e) {
     modal.style.display = 'none';
   }
 });
+
+
+// Open Modal on Course Click
+document.querySelectorAll('.course-card').forEach(card => {
+  card.addEventListener('click', function(e) {
+    // Prevent opening modal if clicking accordion, links, OR videos/iframes/controls
+    if (e.target.closest('.accordion') || e.target.closest('a') || e.target.closest('video') || e.target.closest('iframe')) return;
+    
+    const content = this.innerHTML;
+    document.getElementById('modalBodyContent').innerHTML = content;
+    document.getElementById('courseModal').style.display = 'flex';
+  });
+});
+document.querySelectorAll('.course-card video').forEach(video => {
+  video.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+});
