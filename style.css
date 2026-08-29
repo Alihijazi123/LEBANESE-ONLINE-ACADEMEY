@@ -23,7 +23,6 @@
 }
 
 body {
-
   background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-body);
@@ -31,6 +30,7 @@ body {
   overflow-x: hidden;
   position: relative;
 }
+
 /* Custom Scroll Reveal Animation Enhancement */
 section {
   opacity: 0;
@@ -42,6 +42,7 @@ section.aos-animate, section.section-visible {
   opacity: 1;
   transform: translateY(0);
 }
+
 /* Modal Popup Styling */
 .course-modal {
   display: none;
@@ -52,7 +53,8 @@ section.aos-animate, section.section-visible {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   justify-content: center;
   align-items: center;
   padding: 20px;
@@ -60,15 +62,16 @@ section.aos-animate, section.section-visible {
 
 .modal-content {
   background: #111;
-  border: 1px solid #d4af37;
+  border: 4px solid #d4af37;
   padding: 30px;
   border-radius: 15px;
-  max-width: 600px;
+  max-width: 500px;
   width: 100%;
   color: #fff;
   position: relative;
   max-height: 90vh;
   overflow-y: auto;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.2);
 }
 
 .close-modal {
@@ -79,15 +82,6 @@ section.aos-animate, section.section-visible {
   color: #d4af37;
   cursor: pointer;
   font-weight: bold;
-}
-
-.course-card {
-  cursor: pointer; /* La byan enno fi kabsit mouse */
-  transition: transform 0.3s ease;
-}
-
-.course-card:hover {
-  transform: translateY(-5px);
 }
 
 /* Floating Math Symbols Background */
@@ -230,6 +224,7 @@ section.aos-animate, section.section-visible {
   width: 100%;
   background: rgba(18, 20, 24, 0.85);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   z-index: 1000;
   border-bottom: 1px solid rgba(212, 175, 55, 0.1);
   transition: var(--transition);
@@ -290,10 +285,10 @@ section {
 
 /* --- Hero Section --- */
 .hero-section {
-  position:relative;
+  position: relative;
   background-image: url('./images/photo_2026-08-29_00-56-41.jpg');
-  background-size:cover;
-  background-position:center top;
+  background-size: cover;
+  background-position: center top;
   background-repeat: no-repeat;
   min-height: 100vh;
   display: flex;
@@ -441,28 +436,82 @@ section {
 
 .courses-grid {
   display: grid;
-  grid-template-columns: repeat(5 , 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 1.5rem;
 }
 
+/* --- Course Cards: Glassmorphism, Glowing Shadows & Shine Animation --- */
 .course-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 0;
   overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  
+  /* Glassmorphism الأساسي الخلفي مع ظلال عميقة */
+  background: rgba(22, 26, 34, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  
+  /* الانتقال السلس للحركة */
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* تأثير اللمعان المتحرك (Shimmer Effect) عبر الـ Pseudo-element */
+.course-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    0deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  transform: rotate(35deg) translateY(-100%);
+  transition: transform 0.7s ease;
+  pointer-events: none;
+}
+
+/* عند الضغط أو الوقوف على الكرت (Hover Effect) */
+.course-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  border-color: var(--gold-primary);
+  /* خلفية زجاجية مضيئة مع ظلال ذهبية وخارجية قوية خلف الكرت */
+  background: rgba(30, 35, 45, 0.85);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 175, 55, 0.35);
+}
+
+/* تفعيل اللمعان عند الـ Hover */
+.course-card:hover::after {
+  transform: rotate(35deg) translateY(100%);
 }
 
 .course-img-wrapper {
   position: relative;
-  height: 100px;
+  height: 200px;
   width: 100%;
+  overflow: hidden;
 }
 
 .course-img-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* زووم الصورة داخلياً مع حركة الكرت */
+.course-card:hover .course-img-wrapper img {
+  transform: scale(1.1);
 }
 
 .level-tag {
@@ -470,6 +519,8 @@ section {
   top: 12px;
   left: 12px;
   background: rgba(18, 20, 24, 0.85);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   padding: 4px 10px;
   border-radius: 20px;
   font-size: 0.7rem;
@@ -477,7 +528,8 @@ section {
   letter-spacing: 1px;
   color: var(--gold-primary);
   font-weight: 700;
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 2;
 }
 
 .gold-badge {
@@ -505,6 +557,7 @@ section {
   font-family: var(--font-heading);
   font-size: 1.2rem;
   margin-bottom: 0.4rem;
+  color: #fff;
 }
 
 .card-desc {
@@ -595,6 +648,25 @@ section {
   margin-bottom: 0.25rem;
 }
 
+/* --- Video Section --- */
+.video-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.video-wrapper {
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.video-card:hover .video-wrapper {
+  transform: scale(1.08);
+}
+
 /* --- Contact Section --- */
 .contact-container {
   max-width: 650px;
@@ -643,7 +715,103 @@ footer {
   color: var(--text-muted);
   font-size: 0.85rem;
 }
+/* ==========================================================
+   إضافات حركات وتصميمات فخمة جديدة (New Animations & Styles)
+   ========================================================== */
 
+/* 1. تأثير توهج خلفية اللوجو والـ Navbar (Logo Glow Pulse) */
+.logo {
+  position: relative;
+}
+.logo-symbol {
+  display: inline-block;
+  animation: logoPulse 3s infinite ease-in-out;
+}
+@keyframes logoPulse {
+  0%, 100% { text-shadow: 0 0 10px rgba(212, 175, 55, 0.4); }
+  50% { text-shadow: 0 0 25px rgba(212, 175, 55, 0.8), 0 0 5px var(--gold-primary); }
+}
+
+/* 2. تأثير لمعان خفيف ومتحرك للأزرار الرئيسية (Shimmer Button Effect) */
+.btn-gold {
+  position: relative;
+  overflow: hidden;
+}
+.btn-gold::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%) rotate(30deg);
+  transition: transform 0.8s ease-in-out;
+}
+.btn-gold:hover::after {
+  transform: translateX(100%) rotate(30deg);
+}
+
+/* 3. شريط تقدم التصفح العلوي المتحرك (Scroll Progress Bar) */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(to right, #b8860b, var(--gold-primary), #f3e5ab);
+  width: 0%;
+  z-index: 99999;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px var(--gold-primary);
+}
+
+/* 4. تأثير عائم (Floating Animation) لكروت الإحصائيات أو الـ Hero Badges */
+.badge, .stat-card {
+  animation: floatingCard 4s ease-in-out infinite alternate;
+}
+.stat-card:nth-child(even) {
+  animation-delay: 2s; /* لجعل الحركة غير متزامنة وتعطي طابع حيوي */
+}
+@keyframes floatingCard {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-6px); }
+}
+
+/* 5. تحسين جمالية الـ Scrollbar ليتناسب مع الثيم الذهبي الفاخر */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2f3d;
+  border-radius: 5px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-primary);
+}
+
+/* 6. تأثير التوهج المتقطع للـ Tags أو الـ Level-Tags المهمة */
+.level-tag.gold-badge {
+  animation: goldBadgeGlow 2.5s infinite alternate;
+}
+@keyframes goldBadgeGlow {
+  0% { box-shadow: 0 0 5px rgba(212, 175, 55, 0.3); }
+  100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.7); }
+}
+
+/* 7. إضافات جمالية عند التركيز على حقول الإدخال في نموذج الواتساب */
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  background: rgba(30, 35, 45, 0.95);
+  transform: translateY(-2px);
+}
 
 /* Responsive Media Queries for Mobile Optimization */
 @media (max-width: 900px) {
@@ -656,7 +824,6 @@ footer {
 }
 
 @media (max-width: 780px) {
-  /* تعديل الخطوط والأزرار بالرئيسية لتناسب الشاشات الصغيرة */
   .hero-content h1 { 
     font-size: 2.1rem; 
     line-height: 1.2;
@@ -670,7 +837,6 @@ footer {
     padding: 4rem 5% 2rem; 
   }
 
-  /* ترتيب بطاقات الدورات (Offered Courses) لتكون تحت بعضها بشكل عمودي ومنظم */
   .courses-grid, .course-container, .cards-container {
     display: flex;
     flex-direction: column;
@@ -685,37 +851,31 @@ footer {
     margin: 0 auto;
   }
 
-  /* ترتيب عدادات الإحصائيات (15+ Years Experience وغيرها) تحت بعضها */
-/* اجعل الحاوية الخاصة بالبطاقات تعرض العناصر بجانب بعضها */
-.stats-grid, .features-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr) !important; /* عمودين متساويين */
-  gap: 15px !important; /* مسافة صغيرة ومرتبة بين الكروت */
-  width: 100%;
-  padding: 0 10px;
-  justify-content: center;
-}
+  .stats-grid, .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 15px !important;
+    width: 100%;
+    padding: 0 10px;
+    justify-content: center;
+  }
 
-/* تعديل عرض الكرت ليتناسب مع العمودين */
-.stats-grid .stat-card, .features-grid .feature-card, .stats-grid > div {
-  width: 100% !important;
-  max-width: none !important;
-}
-@media (max-width: 780px) {
-  /* تصغير حجم الكرت والـ Padding بداخله */
+  .stats-grid .stat-card, .features-grid .feature-card, .stats-grid > div {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
   .stats-grid > div, .features-grid > div, .stat-card {
     padding: 15px 10px !important;
     min-height: 120px !important;
     border-radius: 12px !important;
   }
 
-  /* تصغير حجم الأرقام داخل الكروت */
   .stats-grid h3, .stat-card h3, .stats-grid .number {
     font-size: 1.8rem !important;
     margin-bottom: 5px !important;
   }
 
-  /* تصغير حجم النصوص والأيقونات */
   .stats-grid p, .stat-card p {
     font-size: 0.75rem !important;
     letter-spacing: 0.5px;
@@ -727,8 +887,7 @@ footer {
     height: 24px !important;
     margin-bottom: 5px !important;
   }
-}
-  /* تصغير عناوين الأقسام الرئيسية لتتلائم مع الشاشة */
+  
   h2 {
     font-size: 2rem !important;
   }

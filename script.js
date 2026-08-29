@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (filterValue === "all" || filterValue === cardCategory) {
           card.style.display = "flex";
-          // تأثير حركة دخول متسلسلة لكل كرت ورا التاني
           setTimeout(() => {
             card.style.opacity = "1";
             card.style.transform = "translateY(0) scale(1)";
@@ -54,7 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ضبط الحالة الأوليّة للكرتات عشان تبدأ الحركة بشكل صحيح
   courseCards.forEach((card) => {
     card.style.transition = "all 0.5s cubic-bezier(0.16, 1, 0.3, 1)";
   });
@@ -69,13 +67,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (body.style.maxHeight) {
         body.style.maxHeight = null;
-        arrow.textContent = "▼";
+        if (arrow) arrow.textContent = "▼";
       } else {
         document.querySelectorAll(".accordion-body").forEach((b) => b.style.maxHeight = null);
         document.querySelectorAll(".arrow").forEach((a) => a.textContent = "▼");
 
         body.style.maxHeight = body.scrollHeight + "px";
-        arrow.textContent = "▲";
+        if (arrow) arrow.textContent = "▲";
       }
     });
   });
@@ -96,7 +94,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     navLinks.forEach((link) => {
       link.classList.remove("active");
-      if (link.getAttribute("href").includes(currentSection)) {
+      const href = link.getAttribute("href");
+      if (href && href.includes(currentSection)) {
         link.classList.add("active");
       }
     });
@@ -118,87 +117,180 @@ document.addEventListener("DOMContentLoaded", () => {
       formStatus.style.color = "#d4af37";
       formStatus.textContent = "Redirecting to WhatsApp...";
 
-      // Format WhatsApp Message Payload
       const phoneNumber = "96181713254";
       const text = `Hello Meryana! I would like to book a course session.%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Level:* ${encodeURIComponent(level)}%0A*Message:* ${encodeURIComponent(message)}`;
 
       setTimeout(() => {
         formStatus.style.color = "#25d366";
         formStatus.textContent = "Success! Opening WhatsApp...";
-        
-        // Open WhatsApp Web/App
         window.open(`https://wa.me/${phoneNumber}?text=${text}`, "_blank");
         whatsappForm.reset();
       }, 1000);
     });
   }
-});
 
-// Smooth Scroll Reveal for Sections
-  const allSections = document.querySelectorAll("section");
+  // 5. Enhanced Scroll Reveal Animation for Sections & Cards (Up & Down scrolling active)
+  const revealElements = document.querySelectorAll("section, .course-card, .video-card, .stat-card, .about-text-card");
 
-  const revealSection = (entries, observer) => {
+  const revealOnScroll = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("section-visible");
         entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
+        entry.target.style.transform = "translateY(0) scale(1)";
       }
     });
-  };
-
-  const sectionObserver = new IntersectionObserver(revealSection, {
+  }, {
     root: null,
-    threshold: 0.15, // بيشتغل أول ما يبان 15% من القسم عالتلفون
+    threshold: 0.1,
   });
 
-  allSections.sectionObserver = allSections.forEach(section => {
-    section.style.opacity = "0";
-    section.style.transform = "translateY(40px)";
-    section.style.transition = "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)";
-    sectionObserver.observe(section);
+  revealElements.forEach(el => {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(40px) scale(0.98)";
+    el.style.transition = "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)";
+    revealOnScroll.observe(el);
   });
 
+  // 6. Stats Counter Animation (تفعيل العد التصاعدي للـ Experience والـ Stats)
+  const statNumbers = document.querySelectorAll(".stat-card h3, .stats-grid h3");
+  let animatedStats = false;
 
-  // Open Modal on Course Click
-document.querySelectorAll('.course-card').forEach(card => {
-  card.addEventListener('click', function(e) {
-    // La ma yekbos 3al accordion aw el zakir bi alb el card w yeftah lal mawhal
-    if (e.target.closest('.accordion') || e.target.closest('a')) return;
-    
-    const content = this.innerHTML;
-    document.getElementById('modalBodyContent').innerHTML = content;
-    document.getElementById('courseModal').style.display = 'flex';
-  });
-});
+  const statsSection = document.querySelector(".stats-grid") || document.querySelector(".about-container");
 
-// Close Modal on 'X' click
-document.querySelector('.close-modal').addEventListener('click', function() {
-  document.getElementById('courseModal').style.display = 'none';
-});
+  if (statsSection) {
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !animatedStats) {
+          statNumbers.forEach(numEl => {
+            const textValue = numEl.innerText;
+            const target = parseInt(textValue.replace(/\D/g, '')); // استخراج الرقم فقط
+            if (isNaN(target)) return;
 
-// Close Modal when clicking outside the box
-window.addEventListener('click', function(e) {
-  const modal = document.getElementById('courseModal');
-  if (e.target == modal) {
-    modal.style.display = 'none';
+            let current = 0;
+            const increment = target / 30; // سرعة العداد
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= target) {
+                numEl.innerText = target + (textValue.includes('+') ? '+' : '');
+                clearInterval(timer);
+              } else {
+                numEl.innerText = Math.floor(current) + (textValue.includes('+') ? '+' : '');
+              }
+            }, 40);
+          });
+          animatedStats = true;
+        }
+      });
+    }, { threshold: 0.3 });
+
+    statsObserver.observe(statsSection);
   }
-});
 
+  // 7. Modal Functionality with Accordion Fix inside Modal
+  document.querySelectorAll('.course-card').forEach(card => {
+    card.addEventListener('click', function(e) {
+      if (e.target.closest('.accordion') || e.target.closest('a') || e.target.closest('video') || e.target.closest('iframe')) return;
+      
+      const content = this.innerHTML;
+      const modalBody = document.getElementById('modalBodyContent');
+      if (modalBody) {
+        modalBody.innerHTML = content;
+        document.getElementById('courseModal').style.display = 'flex';
 
-// Open Modal on Course Click
-document.querySelectorAll('.course-card').forEach(card => {
-  card.addEventListener('click', function(e) {
-    // Prevent opening modal if clicking accordion, links, OR videos/iframes/controls
-    if (e.target.closest('.accordion') || e.target.closest('a') || e.target.closest('video') || e.target.closest('iframe')) return;
-    
-    const content = this.innerHTML;
-    document.getElementById('modalBodyContent').innerHTML = content;
-    document.getElementById('courseModal').style.display = 'flex';
+        // إعادة تفعيل الـ Accordion خصيصاً للشيء اللي جوة المودل
+        const modalAccordions = modalBody.querySelectorAll(".accordion-header");
+        modalAccordions.forEach((header) => {
+          header.addEventListener("click", () => {
+            const body = header.nextElementSibling;
+            const arrow = header.querySelector(".arrow");
+
+            if (body.style.maxHeight) {
+              body.style.maxHeight = null;
+              if (arrow) arrow.textContent = "▼";
+            } else {
+              modalBody.querySelectorAll(".accordion-body").forEach((b) => b.style.maxHeight = null);
+              modalBody.querySelectorAll(".arrow").forEach((a) => a.textContent = "▼");
+
+              body.style.maxHeight = body.scrollHeight + "px";
+              if (arrow) arrow.textContent = "▲";
+            }
+          });
+        });
+      }
+    });
+  });
+
+  const closeModalBtn = document.querySelector('.close-modal');
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', function() {
+      document.getElementById('courseModal').style.display = 'none';
+    });
+  }
+
+  window.addEventListener('click', function(e) {
+    const modal = document.getElementById('courseModal');
+    if (e.target == modal) {
+      modal.style.display = 'none';
+    }
+  });
+
+  // 8. Dynamic Back to Top Button Creation & Scroll Progress
+  const backToTopBtn = document.createElement("button");
+  backToTopBtn.innerHTML = "▲";
+  backToTopBtn.id = "backToTopBtn";
+  backToTopBtn.style.cssText = `
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    background: #d4af37;
+    color: #121418;
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    transition: all 0.3s ease;
+    z-index: 999;
+  `;
+  document.body.appendChild(backToTopBtn);
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.style.display = "flex";
+    } else {
+      backToTopBtn.style.display = "none";
+    }
+  });
+
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+
+  backToTopBtn.addEventListener("mouseenter", () => {
+    backToTopBtn.style.transform = "scale(1.1) translateY(-3px)";
+  });
+  backToTopBtn.addEventListener("mouseleave", () => {
+    backToTopBtn.style.transform = "scale(1) translateY(0)";
   });
 });
-document.querySelectorAll('.course-card video').forEach(video => {
-  video.addEventListener('click', (e) => {
-    e.stopPropagation();
-  });
+// Dynamic Scroll Progress Bar
+const progressBar = document.createElement("div");
+progressBar.className = "scroll-progress-bar";
+document.body.appendChild(progressBar);
+
+window.addEventListener("scroll", () => {
+  const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+  progressBar.style.width = scrolled + "%";
 });
