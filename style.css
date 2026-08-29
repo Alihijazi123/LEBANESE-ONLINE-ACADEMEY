@@ -23,12 +23,71 @@
 }
 
 body {
+
   background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-body);
   line-height: 1.6;
   overflow-x: hidden;
   position: relative;
+}
+/* Custom Scroll Reveal Animation Enhancement */
+section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.8s ease-out, transform 3.8s ease-out;
+}
+
+section.aos-animate, section.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Modal Popup Styling */
+.course-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-content {
+  background: #111;
+  border: 1px solid #d4af37;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 600px;
+  width: 100%;
+  color: #fff;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  color: #d4af37;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.course-card {
+  cursor: pointer; /* La byan enno fi kabsit mouse */
+  transition: transform 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
 }
 
 /* Floating Math Symbols Background */
@@ -231,12 +290,12 @@ section {
 
 /* --- Hero Section --- */
 .hero-section {
-  position: relative;
-  background-image: url('./photo_2026-08-25_14-14-50.jpg');
-  background-size: cover;
-  background-position: center top;
+  position:relative;
+  background-image: url('./images/photo_2026-08-29_00-56-41.jpg');
+  background-size:cover;
+  background-position:center top;
   background-repeat: no-repeat;
-  min-height: 90vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   color: #ffffff;
@@ -251,7 +310,7 @@ section {
   height: 100%;
   background: linear-gradient(
     to right, 
-    rgba(15, 23, 42, 0.88) 0%, 
+    rgba(30, 23, 42, 0.88) 0%, 
     rgba(15, 23, 42, 0.65) 50%, 
     rgba(15, 23, 42, 0.3) 100%
   );
@@ -397,7 +456,7 @@ section {
 .course-img-wrapper {
   position: relative;
   height: 100px;
-  width: 50%;
+  width: 100%;
 }
 
 .course-img-wrapper img {
@@ -585,15 +644,92 @@ footer {
   font-size: 0.85rem;
 }
 
-/* Responsive Media Queries */
+
+/* Responsive Media Queries for Mobile Optimization */
 @media (max-width: 900px) {
   .about-container {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 15px;
   }
 }
 
 @media (max-width: 780px) {
-  .hero-content h1 { font-size: 2.4rem; }
-  .nav-links { display: none; }
-  section { padding: 5rem 5% 3rem; }
+  /* تعديل الخطوط والأزرار بالرئيسية لتناسب الشاشات الصغيرة */
+  .hero-content h1 { 
+    font-size: 2.1rem; 
+    line-height: 1.2;
+  }
+  
+  .nav-links { 
+    display: none; 
+  }
+  
+  section { 
+    padding: 4rem 5% 2rem; 
+  }
+
+  /* ترتيب بطاقات الدورات (Offered Courses) لتكون تحت بعضها بشكل عمودي ومنظم */
+  .courses-grid, .course-container, .cards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .course-card, .video-card {
+    width: 100% !important;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  /* ترتيب عدادات الإحصائيات (15+ Years Experience وغيرها) تحت بعضها */
+/* اجعل الحاوية الخاصة بالبطاقات تعرض العناصر بجانب بعضها */
+.stats-grid, .features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr) !important; /* عمودين متساويين */
+  gap: 15px !important; /* مسافة صغيرة ومرتبة بين الكروت */
+  width: 100%;
+  padding: 0 10px;
+  justify-content: center;
+}
+
+/* تعديل عرض الكرت ليتناسب مع العمودين */
+.stats-grid .stat-card, .features-grid .feature-card, .stats-grid > div {
+  width: 100% !important;
+  max-width: none !important;
+}
+@media (max-width: 780px) {
+  /* تصغير حجم الكرت والـ Padding بداخله */
+  .stats-grid > div, .features-grid > div, .stat-card {
+    padding: 15px 10px !important;
+    min-height: 120px !important;
+    border-radius: 12px !important;
+  }
+
+  /* تصغير حجم الأرقام داخل الكروت */
+  .stats-grid h3, .stat-card h3, .stats-grid .number {
+    font-size: 1.8rem !important;
+    margin-bottom: 5px !important;
+  }
+
+  /* تصغير حجم النصوص والأيقونات */
+  .stats-grid p, .stat-card p {
+    font-size: 0.75rem !important;
+    letter-spacing: 0.5px;
+  }
+
+  .stats-grid i, .stat-card i, .stats-grid svg {
+    font-size: 1.2rem !important;
+    width: 24px !important;
+    height: 24px !important;
+    margin-bottom: 5px !important;
+  }
+}
+  /* تصغير عناوين الأقسام الرئيسية لتتلائم مع الشاشة */
+  h2 {
+    font-size: 2rem !important;
+  }
 }

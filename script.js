@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 1. Course Category Filtering
+  // 1. Course Category Filtering with Smooth Stagger Animation
   const filterButtons = document.querySelectorAll(".filter-btn");
   const courseCards = document.querySelectorAll(".course-card");
 
@@ -28,25 +28,35 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.classList.add("active");
 
       const filterValue = btn.getAttribute("data-filter");
+      let visibleIndex = 0;
 
       courseCards.forEach((card) => {
         const cardCategory = card.getAttribute("data-category");
 
         if (filterValue === "all" || filterValue === cardCategory) {
           card.style.display = "flex";
+          // تأثير حركة دخول متسلسلة لكل كرت ورا التاني
           setTimeout(() => {
             card.style.opacity = "1";
-            card.style.transform = "scale(1)";
+            card.style.transform = "translateY(0) scale(1)";
+            card.style.transition = `all 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${visibleIndex * 0.08}s`;
           }, 50);
+          visibleIndex++;
         } else {
           card.style.opacity = "0";
-          card.style.transform = "scale(0.95)";
+          card.style.transform = "translateY(30px) scale(0.95)";
+          card.style.transition = "all 0.3s ease";
           setTimeout(() => {
             card.style.display = "none";
           }, 300);
         }
       });
     });
+  });
+
+  // ضبط الحالة الأوليّة للكرتات عشان تبدأ الحركة بشكل صحيح
+  courseCards.forEach((card) => {
+    card.style.transition = "all 0.5s cubic-bezier(0.16, 1, 0.3, 1)";
   });
 
   // 2. Terminale Syllabus Accordion Interactive Dropdowns
@@ -124,8 +134,53 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// Smooth Scroll Reveal for Sections
+  const allSections = document.querySelectorAll("section");
+
+  const revealSection = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("section-visible");
+        entry.target.style.opacity = "1";
+        entry.target.style.transform = "translateY(0)";
+      }
+    });
+  };
+
+  const sectionObserver = new IntersectionObserver(revealSection, {
+    root: null,
+    threshold: 0.15, // بيشتغل أول ما يبان 15% من القسم عالتلفون
+  });
+
+  allSections.sectionObserver = allSections.forEach(section => {
+    section.style.opacity = "0";
+    section.style.transform = "translateY(40px)";
+    section.style.transition = "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)";
+    sectionObserver.observe(section);
+  });
 
 
+  // Open Modal on Course Click
+document.querySelectorAll('.course-card').forEach(card => {
+  card.addEventListener('click', function(e) {
+    // La ma yekbos 3al accordion aw el zakir bi alb el card w yeftah lal mawhal
+    if (e.target.closest('.accordion') || e.target.closest('a')) return;
+    
+    const content = this.innerHTML;
+    document.getElementById('modalBodyContent').innerHTML = content;
+    document.getElementById('courseModal').style.display = 'flex';
+  });
+});
 
+// Close Modal on 'X' click
+document.querySelector('.close-modal').addEventListener('click', function() {
+  document.getElementById('courseModal').style.display = 'none';
+});
 
-
+// Close Modal when clicking outside the box
+window.addEventListener('click', function(e) {
+  const modal = document.getElementById('courseModal');
+  if (e.target == modal) {
+    modal.style.display = 'none';
+  }
+});
