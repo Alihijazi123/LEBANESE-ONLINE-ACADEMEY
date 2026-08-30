@@ -3,27 +3,139 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary SEO Meta Tags -->
   <title>Lebanese Online Academy | Math avec Meryana Youness</title>
+  <meta name="title" content="Lebanese Online Academy | Math avec Meryana Youness">
+  <meta name="description" content="أفضل منصة لتعلم الرياضيات أونلاين في لبنان مع الأستاذة مريانا يونس. Math courses, math learning, Brevet, Seconde, Bac 1, and Terminale online math tutoring in Lebanon.">
+  <meta name="keywords" content="بدي أتعلم math online, معلمة math in lebanon, math courses, math learning, Lebanese Online Academy, Meryana Youness, دروس رياضيات أونلاين لبنان, Brevet math online, Bac 1 math, Terminale LS SE">
+  <meta name="author" content="Meryana Youness">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://lebanese-online-academy.com/">
+
+  <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lebanese-online-academy.com/">
+  <meta property="og:title" content="Lebanese Online Academy | Math avec Meryana Youness">
+  <meta property="og:description" content="أفضل منصة لتعلم الرياضيات أونلاين في لبنان مع الأستاذة مريانا يونس. Math courses, math learning, Brevet, Seconde, Bac 1, and Terminale online math tutoring in Lebanon.">
+  <meta property="og:image" content="./images/photo_2026-08-29_00-56-35.jpg">
+
+  <!-- Twitter Meta Tags -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://lebanese-online-academy.com/">
+  <meta property="twitter:title" content="Lebanese Online Academy | Math avec Meryana Youness">
+  <meta property="twitter:description" content="أفضل منصة لتعلم الرياضيات أونلاين في لبنان مع الأستاذة مريانا يونس. Math courses, math learning, Brevet, Seconde, Bac 1, and Terminale online math tutoring in Lebanon.">
+  <meta property="twitter:image" content="./images/photo_2026-08-29_00-56-35.jpg">
+
+  <!-- Schema.org Structured Data for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Lebanese Online Academy",
+    "alternateName": "Math avec Meryana Youness",
+    "url": "https://lebanese-online-academy.com/",
+    "logo": "./images/photo_2026-08-29_00-56-35.jpg",
+    "founder": {
+      "@type": "Person",
+      "name": "Meryana Youness"
+    },
+    "description": "أفضل منصة لتعلم الرياضيات أونلاين في لبنان مع الأستاذة مريانا يونس (معلمة math in lebanon). دورات رياضيات شاملة لجميع المراحل: Brevet, Seconde, Bac 1, Terminale LS & SE.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "LB"
+    },
+    "telephone": "+96181713254",
+    "email": "younesmeryana@gmail.com"
+  }
+  </script>
+
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Internal CSS for Menu Dropdown styling -->
+  <style>
+    .menu-dropdown-container {
+      position: relative;
+    }
+    
+    .menu-dropdown-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      right: 0;
+      top: 120%;
+      background: rgba(15, 15, 15, 0.95);
+      backdrop-filter: blur(12px);
+      min-width: 220px;
+      border-radius: 12px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+      display: none;
+      flex-direction: column;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+
+    .dropdown-content.show {
+      display: flex;
+    }
+
+    .dropdown-content a {
+      color: #fff;
+      padding: 12px 20px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dropdown-content a:hover {
+      background: rgba(212, 175, 55, 0.15);
+      color: #d4af37;
+      padding-left: 25px;
+    }
+
+    .dropdown-content a.dropdown-book {
+      background: #d4af37;
+      color: #000;
+      font-weight: 600;
+      margin: 8px 15px 0 15px;
+      border-radius: 6px;
+      justify-content: center;
+    }
+
+    .dropdown-content a.dropdown-book:hover {
+      background: #e6c547;
+      padding-left: 20px;
+    }
+  </style>
 </head>
-<!-- Course Modal Popup -->
-<div id="courseModal" class="course-modal">
-  <div class="modal-content glass-card">
-    <span class="close-modal">&times;</span>
-    <div id="modalBodyContent">
-      <!-- El ma3loumat rah tenzal hon lal course li kbasto -->
-       <ul>
-        <li></li>
-       </ul>
+
+<body>
+
+  <!-- Course Modal Popup -->
+  <div id="courseModal" class="course-modal">
+    <div class="modal-content glass-card">
+      <span class="close-modal">&times;</span>
+      <div id="modalBodyContent">
+         <ul>
+          <li></li>
+         </ul>
+      </div>
     </div>
   </div>
-</div>
-<body>
 
   <div class="math-bg-symbols">
     <span style="top: 10%; left: 8%;">f(x)</span>
@@ -38,14 +150,27 @@
     <div class="logo">
       <span class="logo-symbol">∑</span> Lebanese Online<span class="gold-text">Academy</span>
     </div>
-    <ul class="nav-links">
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#videos">Sample Videos</a></li>
-      <li><a href="#courses">Courses</a></li>
-      <li><a href="#contact">Contact</a></li>
+
+    <!-- Main Navigation Links (for desktop view) -->
+    <ul class="nav-links" id="navLinks" style="display: none;">
+      <!-- Hidden or managed via dropdown -->
     </ul>
-    <a href="#contact" class="btn-gold nav-btn"><i class="fab fa-whatsapp"></i> Book a Session</a>
+
+    <!-- Menu Dropdown Button (Ma7al Book a Session) -->
+    <div class="menu-dropdown-container">
+      <button class="btn-gold menu-dropdown-btn" id="menuDropdownBtn">
+        <i class="fas fa-bars"></i> Menu
+      </button>
+      <div class="dropdown-content" id="dropdownMenu">
+        <a href="#home"><i class="fas fa-home gold-text"></i> Home</a>
+        <a href="#about"><i class="fas fa-user-tie gold-text"></i> About</a>
+        <a href="#videos"><i class="fas fa-video gold-text"></i> Sample Videos</a>
+        <a href="#courses"><i class="fas fa-graduation-cap gold-text"></i> Courses</a>
+        <a href="#dashboard"><i class="fas fa-chart-pie gold-text"></i> Dashboard</a>
+        <a href="#contact"><i class="fas fa-envelope gold-text"></i> Contact</a>
+        <a href="#contact" class="dropdown-book"><i class="fab fa-whatsapp"></i> Book a Session</a>
+      </div>
+    </div>
   </nav>
 
   <section id="home" class="hero-section">
@@ -106,53 +231,46 @@
 
   <!-- NEW VIDEOS SECTION -->
   <section id="videos" class="videos-section" style="padding: 80px 5%; background: rgba(0,0,0,0.2);">
-  <div class="section-header" data-aos="fade-up">
-    <h2>Sample <span class="gold-text">Video Lessons</span></h2>
-    <p>Watch how complex equations and concepts are simplified step-by-step</p>
-    <div class="gold-line"></div>
-  </div>
-
-  <div class="videos-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
-    
-    <!-- Video Card 1 -->
-    <div class="video-card glass-card" data-aos="zoom-in" data-aos-delay="100" style="overflow: hidden; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
-      <div class="video-wrapper" style="position: relative; width: 100%; aspect-ratio: 16/9; background: #111;">
-        <video width="100%" height="100%" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;">
-          <source src="./images/video_2026-08-29_02-37-57.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="card-content" style="padding: 20px;">
-        <span class="level-tag" style="background: var(--gold-color, #d4af37); color: #000; padding: 4px 10px; font-size: 0.8rem; border-radius: 4px; font-weight: 600;">Grade 9</span>
-        <h3 style="margin: 10px 0 5px; font-size: 1.2rem; color: #d4af37;">System of Two Equations Two Unkowns</h3>
-        <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 0;">A complete breakdown of official exam problems regarding exponential growth and integral applications.</p>
-      </div>
+    <div class="section-header" data-aos="fade-up">
+      <h2>Sample <span class="gold-text">Video Lessons</span></h2>
+      <p>Watch how complex equations and concepts are simplified step-by-step</p>
+      <div class="gold-line"></div>
     </div>
 
-    <!-- Video Card 2 -->
-    <div class="video-card glass-card" data-aos="zoom-in" data-aos-delay="200" style="overflow: hidden; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
-      <div class="video-wrapper" style="position: relative; width: 100%; aspect-ratio: 16/9; background: #111;">
-        <video width="100%" height="100%" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;">
-          <source src="./images/video_2026-08-29_02-38-31.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+    <div class="videos-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
+      <!-- Video Card 1 -->
+      <div class="video-card glass-card" data-aos="zoom-in" data-aos-delay="100" style="overflow: hidden; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+        <div class="video-wrapper" style="position: relative; width: 100%; aspect-ratio: 16/9; background: #111;">
+          <video width="100%" height="100%" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;">
+            <source src="./images/video_2026-08-29_02-37-57.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="card-content" style="padding: 20px;">
+          <span class="level-tag" style="background: var(--gold-color, #d4af37); color: #000; padding: 4px 10px; font-size: 0.8rem; border-radius: 4px; font-weight: 600;">Grade 9</span>
+          <h3 style="margin: 10px 0 5px; font-size: 1.2rem; color: #d4af37;">System of Two Equations Two Unkowns</h3>
+          <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 0;">A complete breakdown of official exam problems regarding exponential growth and integral applications.</p>
+        </div>
       </div>
-      <div class="card-content" style="padding: 20px;">
-        <span class="level-tag" style="background: var(--gold-color, #d4af37); color: #000; padding: 4px 10px; font-size: 0.8rem; border-radius: 4px; font-weight: 600;">Grade 10</span>
-        <h3 style="margin: 10px 0 5px; font-size: 1.2rem; color: #d4af37;">Inequalities</h3>
-        <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 0;">Inequality problem and it's Solution</p>
+
+      <!-- Video Card 2 -->
+      <div class="video-card glass-card" data-aos="zoom-in" data-aos-delay="200" style="overflow: hidden; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+        <div class="video-wrapper" style="position: relative; width: 100%; aspect-ratio: 16/9; background: #111;">
+          <video width="100%" height="100%" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;">
+            <source src="./images/video_2026-08-29_02-38-31.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="card-content" style="padding: 20px;">
+          <span class="level-tag" style="background: var(--gold-color, #d4af37); color: #000; padding: 4px 10px; font-size: 0.8rem; border-radius: 4px; font-weight: 600;">Grade 10</span>
+          <h3 style="margin: 10px 0 5px; font-size: 1.2rem; color: #d4af37;">Inequalities</h3>
+          <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 0;">Inequality problem and it's Solution</p>
+        </div>
       </div>
-    </div>
-
-  </div>
-</section>
-
-    
-
     </div>
   </section>
-  <!-- END VIDEOS SECTION -->
 
+  <!-- COURSES SECTION -->
   <section id="courses" class="courses-section">
     <div class="section-header" data-aos="fade-up">
       <h2>Offered <span class="gold-text">Courses</span></h2>
@@ -171,8 +289,6 @@
     </div>
 
     <div class="courses-grid">
-
-      
       <div class="course-card glass-card" data-category="brevet" data-aos="zoom-in" data-aos-delay="100">
         <div class="course-img-wrapper">
           <img src="./images/photo_2026-08-29_00-56-35.jpg" alt="Brevet Math">
@@ -182,25 +298,24 @@
           <h3>Brevet Mathematics</h3>
           <p class="card-desc">This complete online course includes video lessons plus practice exercises for official exam success.</p>
           <div class="accordion">
-            <div class="accordion-item"></div>
             <button class="accordion-header">
               <span>lessons</span>
               <span class="arrow">▼</span>
             </button>
             <div class="accordion-body">
-          <ul class="topic-list">
-            <li> We start with Geometry </li>
-            <li>Power,Fraction,Square roots </li>
-            <li>Proportion</li>
-            <li>Algebric Expression</li>
-            <li>System of 2 equations of 2 unknowns</li>
-            <li>inequality</li>
-            <li>Lines in a coordinate system.</li>
-            <li>Trigonometry.</li>
-          </ul>
+              <ul class="topic-list">
+                <li>We start with Geometry</li>
+                <li>Power, Fraction, Square roots</li>
+                <li>Proportion</li>
+                <li>Algebraic Expression</li>
+                <li>System of 2 equations of 2 unknowns</li>
+                <li>Inequality</li>
+                <li>Lines in a coordinate system</li>
+                <li>Trigonometry</li>
+              </ul>
+            </div>
           </div>
-          </div>
-          <p class="card-p ">⚡ Limited-Time Offer: Includes free access to all recorded Grade 9 Live Review Sessions upon enrollment!</p>
+          <p class="card-p">⚡ Limited-Time Offer: Includes free access to all recorded Grade 9 Live Review Sessions upon enrollment!</p>
           <a href="#contact" class="btn-gold-sm">Enroll via WhatsApp</a>
         </div>
       </div>
@@ -212,37 +327,24 @@
         </div>
         <div class="card-content">
           <h3>Seconde Mathematics</h3>
-          <p class="card-desc">Master secondary mathematics with confidence through step-by-step video lessons designed to simplify advanced algebric,geomatric,and functional concepts.</p>
+          <p class="card-desc">Master secondary mathematics with confidence through step-by-step video lessons designed to simplify advanced concepts.</p>
           <div class="accordion">
-            <div class="accordion-item"></div>
             <button class="accordion-header">
               <span>lessons</span>
               <span class="arrow">▼</span>
             </button>
-        <div class="accordion-body">
-          <ul class="topic-list">
-            <li>Sets, [10 free samples]</li>
-            <li>Absolute value and intervals. [8 free samples]</li>
-            <li>Order on R</li>
-            <li>Polynomial</li>
-            <li>Trignometric circle and lines</li>
-            <li>Addition and Multiplication of a Vector</li>
-            <li>Coordinate system</li>
-            <li>Scalar Product</li>
-            <li>Equation of a straight line</li>
-            <li>First degree equation and inequalities in one unknown</li>
-            <li>Function</li>
-            <li>Statistics</li>
-            <li>Linear System</li>
-            <li>Study of Function</li>
-          </ul>
+            <div class="accordion-body">
+              <ul class="topic-list">
+                <li>Sets, [10 free samples]</li>
+                <li>Absolute value and intervals</li>
+                <li>Order on R, Polynomial</li>
+                <li>Trigonometric circle and lines</li>
+                <li>Vectors and Coordinate system</li>
+                <li>Scalar Product, Straight line</li>
+                <li>Functions and Statistics</li>
+              </ul>
+            </div>
           </div>
-          </div>
-          <ul class="topic-h3">
-            <h3>INCLUDED WITH YOUR ENROLLMENT:</h3>
-            <li class="second-li"><span>Bouns 1</span> :Video solutions for the exercises in "Bulding Up Mathematics "textbook."</li>
-            <li class="second-li"><span>Bonus 2</span> :solutions for all unsolved  samples in "Smart plus" textbook.</li>
-          </ul>
           <a href="#contact" class="btn-gold-sm">Enroll via WhatsApp</a>
         </div>
       </div>
@@ -254,33 +356,21 @@
         </div>
         <div class="card-content">
           <h3>Bac 1 (Scientific)</h3>
-          <p class="card-desc">"Math is the language in which God has written the universe." -Galileo Galilei. This complete course includes the following lessons:</p>
-          <p><span>Special Preview</span> Includes 35+ free sample lessons across key chapters below!</p>
+          <p class="card-desc">Complete syllabus preparation targeting strong analytical mindset for official scientific tracks.</p>
           <div class="accordion">
-            <div class="accordion-item"></div>
             <button class="accordion-header">
               <span>lessons</span>
               <span class="arrow">▼</span>
             </button>
             <div class="accordion-body">
-          <ul class="topic-list">
-            <li>Equations and Polynomials</li>
-            <li>Sign of the second degree trinomial Inequalities</li>
-            <li>Domain of Defenition</li>
-            <li>Limits</li>
-            <li>Derivatives</li>
-            <li>Polynomial Function</li>
-            <li>Rational and Irrational functions</li>
-            <li>Trignometric equations</li>
-            <li>Equation of a Circle</li>
-            <li>Counting / Permutations</li>
-            <li>Probability</li>
-            <li>Probability 2</li>
-            <li>Numerical Sequence</li>
-            <li>Complex Numbers</li>
-            <li>Antiderivative</li>
-          </ul>
-          </div>
+              <ul class="topic-list">
+                <li>Equations and Polynomials</li>
+                <li>Limits and Derivatives</li>
+                <li>Rational & Irrational functions</li>
+                <li>Trigonometric equations</li>
+                <li>Numerical Sequence & Complex Numbers</li>
+              </ul>
+            </div>
           </div>
           <a href="#contact" class="btn-gold-sm">Enroll via WhatsApp</a>
         </div>
@@ -292,43 +382,22 @@
           <span class="level-tag gold-badge">Grade 12 Official Exam</span>
         </div>
         <div class="card-content">
-          <h3>Terminale SE </h3>
+          <h3>Terminale SE</h3>
           <p class="card-desc">Complete syllabus preparation targeting top official exam scores with intensive past-paper training.</p>
-          
           <div class="accordion">
-            <div class="accordion-item">
-              <button class="accordion-header">
-                <span>Lessons</span>
-                <span class="arrow">▼</span>
-              </button>
-              <div class="accordion-body">
-                <ul>
-                  <li>Distribution of 2 variables</li>
-                  <li>Rational Functions</li>
-                  <li>Derivatives</li>
-                  <li>Composte and inverse function</li>
-                  <li>Functions of Economics</li>
-                  <li>Logarithim</li>
-                  <li>Exponential function</li>
-                  <li>Combinations</li>
-                  <li>Conditional probability and total probability</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <button class="accordion-header">
-                <span></span>
-                <span class="arrow"></span>
-              </button>
-              <div class="accordion-body">
-                <ul>
-                 
-                </ul>
-              </div>
+            <button class="accordion-header">
+              <span>Lessons</span>
+              <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-body">
+              <ul>
+                <li>Distribution of 2 variables</li>
+                <li>Rational Functions & Derivatives</li>
+                <li>Logarithm & Exponential function</li>
+                <li>Combinations & Conditional Probability</li>
+              </ul>
             </div>
           </div>
-
           <a href="#contact" class="btn-gold-sm">Enroll via WhatsApp</a>
         </div>
       </div>
@@ -339,86 +408,100 @@
           <span class="level-tag gold-badge">Grade 12 Official Exam</span>
         </div>
         <div class="card-content">
-          <h3>Terminale LS  </h3>
-          <p class="card-desc">Complete syllabus preparation targeting top official exam scores with intensive past-paper training.</p>
-          
+          <h3>Terminale LS</h3>
+          <p class="card-desc">Rigorous official exam preparation for General Sciences track with advanced calculus.</p>
           <div class="accordion">
-            <div class="accordion-item">
-              <button class="accordion-header">
-                <span>Lessons</span>
-                <span class="arrow">▼</span>
-              </button>
-              <div class="accordion-body">
-                <ul>
-                  <li>Functions</li>
-                  <li>Continues functions on an interval</li>
-                  <li>Second and higher order Derivatives</li>
-                  <li>Composite and Inverse Functions</li>
-                  <li>Logarithim</li>
-                  <li>Exponential Function</li>
-                  <li>Combinations</li>
-                  <li>Conditional Probability</li>
-                  <li>Integral</li>
-                  <li>Methods of integration</li>
-                  <li>Applications of integral calculas</li>
-                  <li>Components of the vector product</li>
-                  <li>Planes and Lines</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <button class="accordion-header">
-                <span></span>
-                <span class=""></span>
-              </button>
-              <div class="accordion-body">
-                <ul>
-                 
-              </div>
+            <button class="accordion-header">
+              <span>Lessons</span>
+              <span class="arrow">▼</span>
+            </button>
+            <div class="accordion-body">
+              <ul>
+                <li>Continuous functions & Derivatives</li>
+                <li>Logarithm & Exponential Function</li>
+                <li>Integral & Methods of integration</li>
+                <li>Vector product, Planes and Lines</li>
+              </ul>
             </div>
           </div>
-
           <a href="#contact" class="btn-gold-sm">Enroll via WhatsApp</a>
         </div>
       </div>
-
     </div>
   </section>
+
+  <!-- DASHBOARD SECTION -->
+  <section id="dashboard" class="dashboard-section" style="padding: 80px 5%; background: rgba(0,0,0,0.3);">
+    <div class="section-header" data-aos="fade-up">
+      <h2>Academy <span class="gold-text">Dashboard</span></h2>
+      <p>Quick overview of your learning portal statistics & activity</p>
+      <div class="gold-line"></div>
+    </div>
+
+    <div class="dashboard-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto;">
+      <div class="glass-card" style="padding: 25px; border-radius: 15px; text-align: center; border: 1px solid rgba(212, 175, 55, 0.3);" data-aos="zoom-in" data-aos-delay="100">
+        <div style="font-size: 2.5rem; color: #d4af37; margin-bottom: 10px;"><i class="fas fa-book-open"></i></div>
+        <h3 style="font-size: 2rem; color: #fff; margin-bottom: 5px;">5</h3>
+        <p style="color: #bbb; font-size: 0.95rem;">Active Grade Tracks</p>
+      </div>
+
+      <div class="glass-card" style="padding: 25px; border-radius: 15px; text-align: center; border: 1px solid rgba(212, 175, 55, 0.3);" data-aos="zoom-in" data-aos-delay="200">
+        <div style="font-size: 2.5rem; color: #d4af37; margin-bottom: 10px;"><i class="fas fa-video"></i></div>
+        <h3 style="font-size: 2rem; color: #fff; margin-bottom: 5px;">120+</h3>
+        <p style="color: #bbb; font-size: 0.95rem;">Video Lessons Uploaded</p>
+      </div>
+
+      <div class="glass-card" style="padding: 25px; border-radius: 15px; text-align: center; border: 1px solid rgba(212, 175, 55, 0.3);" data-aos="zoom-in" data-aos-delay="300">
+        <div style="font-size: 2.5rem; color: #d4af37; margin-bottom: 10px;"><i class="fas fa-users"></i></div>
+        <h3 style="font-size: 2rem; color: #fff; margin-bottom: 5px;">1000+</h3>
+        <p style="color: #bbb; font-size: 0.95rem;">Enrolled Students</p>
+      </div>
+
+      <div class="glass-card" style="padding: 25px; border-radius: 15px; text-align: center; border: 1px solid rgba(212, 175, 55, 0.3);" data-aos="zoom-in" data-aos-delay="400">
+        <div style="font-size: 2.5rem; color: #d4af37; margin-bottom: 10px;"><i class="fas fa-star"></i></div>
+        <h3 style="font-size: 2rem; color: #fff; margin-bottom: 5px;">98%</h3>
+        <p style="color: #bbb; font-size: 0.95rem;">Student Satisfaction</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE SESSIONS SECTION -->
   <section class="live-sessions-section">
-  <h2>Live Online <span class="gold-text">Math Sessions</span></h2>
-  <p class="section-subtitle">Interactive classes tailored for your academic success.</p>
-  
-  <div class="pricing-grid">
-    <div class="price-card">
-      <h3>Brevet (Grade 9)</h3>
-      <div class="price">$10<span>/hr</span></div>
-      <p>Comprehensive curriculum review, exam preparation, and problem-solving practice.</p>
-      <a href="#contact" class="book-btn">Book a Session</a>
-    </div>
+    <h2>Live Online <span class="gold-text">Math Sessions</span></h2>
+    <p class="section-subtitle">Interactive classes tailored for your academic success.</p>
+    
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Brevet (Grade 9)</h3>
+        <div class="price">$10<span>/hr</span></div>
+        <p>Comprehensive curriculum review, exam preparation, and problem-solving practice.</p>
+        <a href="#contact" class="book-btn">Book a Session</a>
+      </div>
 
-    <div class="price-card featured">
-      <h3>Seconde (Grade 10)</h3>
-      <div class="price">$12<span>/hr</span></div>
-      <p>Advanced foundational math concepts, clear explanations, and continuous guidance.</p>
-      <a href="#contact" class="book-btn">Book a Session</a>
-    </div>
       <div class="price-card featured">
-      <h3>Bac1 (Grade 11)</h3>
-      <div class="price">$15<span>/hr</span></div>
-      <p>"Mastering advanced functions, derivatives, trigonometry, and building a strong analytical mindset for official tracks.</p>
-      <a href="#contact" class="book-btn">Book a Session</a>
-    </div>
-    <div class="price-card featured">
-      <h3>Terminale (LS,SE)</h3>
-      <div class="price">$20 <span>/hr</span></div>
-      <p>"Rigorous official exam preparation, advanced calculus, complex numbers, and targeted problem-solving strategies.</p>
-      <a href="#contact" class="book-btn">Book a Session</a>
-    </div>
-    <!-- Zid 2aze badda 2eza fife grades teneh -->
-  </div>
-</section>
+        <h3>Seconde (Grade 10)</h3>
+        <div class="price">$12<span>/hr</span></div>
+        <p>Advanced foundational math concepts, clear explanations, and continuous guidance.</p>
+        <a href="#contact" class="book-btn">Book a Session</a>
+      </div>
+      
+      <div class="price-card featured">
+        <h3>Bac1 (Grade 11)</h3>
+        <div class="price">$15<span>/hr</span></div>
+        <p>Mastering advanced functions, derivatives, trigonometry, and building a strong analytical mindset.</p>
+        <a href="#contact" class="book-btn">Book a Session</a>
+      </div>
 
+      <div class="price-card featured">
+        <h3>Terminale (LS,SE)</h3>
+        <div class="price">$20 <span>/hr</span></div>
+        <p>Rigorous official exam preparation, advanced calculus, complex numbers, and targeted strategies.</p>
+        <a href="#contact" class="book-btn">Book a Session</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
   <section id="contact" class="contact-section">
     <div class="section-header" data-aos="fade-up">
       <h2>Book Your Session or <span class="gold-text">Order Course</span></h2>
@@ -434,7 +517,7 @@
         </div>
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" id="email" required placeholder="your.email@example.com">
+          <input type="email" id="email" required placeholder="your.email@email.com">
         </div>
         <div class="form-group">
           <label for="level">Selected Grade Level / Course</label>
@@ -465,5 +548,35 @@
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
+
+  <!-- JavaScript for Menu Dropdown Toggle Functionality -->
+  <script>
+    const menuDropdownBtn = document.getElementById('menuDropdownBtn');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    menuDropdownBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdownMenu.classList.toggle('show');
+    });
+
+    // Close dropdown when clicking outside
+    window.addEventListener('click', () => {
+      if (dropdownMenu.classList.contains('show')) {
+        dropdownMenu.classList.remove('show');
+      }
+    });
+
+    // Prevent closing when clicking inside the dropdown
+    dropdownMenu.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    // Close dropdown automatically when any link inside it is clicked
+    document.querySelectorAll('.dropdown-content a').forEach(link => {
+      link.addEventListener('click', () => {
+        dropdownMenu.classList.remove('show');
+      });
+    });
+  </script>
 </body>
 </html>
