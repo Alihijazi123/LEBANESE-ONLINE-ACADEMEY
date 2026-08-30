@@ -756,6 +756,96 @@ footer {
 .btn-gold:hover::after {
   transform: translateX(100%) rotate(30deg);
 }
+.live-sessions-section {
+  padding: 30px 20px;
+  background-color: transparent;
+  text-align: center;
+}
+
+.live-sessions-section h2 {
+  font-size: 2.2rem;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  color: #ffffff;
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+}
+
+.pricing-grid {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+ 
+}
+
+.price-card {
+  background: transparent;
+  border: 1px solid #e1e1e1;
+  border-radius: 12px;
+  padding: 30px;
+  width: 260px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.price-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-color: #d4af37;
+}
+
+.price-card.featured {
+  border-color: #d4af37; /* Gold accent la tneseb el theme le baddak yeh */
+  position: relative;
+}
+
+.price-card h3 {
+  font-size: 1.2rem;
+  color: #b8860b;
+  margin-bottom: 15px;
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #d4af37;
+  margin-bottom: 20px;
+}
+
+.price span {
+  font-size: 1rem;
+  color: #777;
+  font-weight: normal;
+}
+
+.price-card p {
+  color: #ffffff;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.book-btn {
+  display: inline-block;
+  background-color: #222;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.book-btn:hover {
+  background-color: #d4af37;
+  color: #000;
+}
 
 /* 3. شريط تقدم التصفح العلوي المتحرك (Scroll Progress Bar) */
 .scroll-progress-bar {
