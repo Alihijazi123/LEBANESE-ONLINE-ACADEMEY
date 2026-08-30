@@ -295,22 +295,3 @@ window.addEventListener("scroll", () => {
   progressBar.style.width = scrolled + "%";
 });
 // 3D Tilt Effect on Cards
-const cards = document.querySelectorAll(".price-card, .course-card");
-
-cards.forEach(card => {
-  card.addEventListener("mousemove", (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    
-    // Control rotation sensitivity
-    const rotateX = (-y / 10);
-    const rotateY = (x / 10);
-    
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.02)`;
-  });
-  
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)";
-  });
-});
