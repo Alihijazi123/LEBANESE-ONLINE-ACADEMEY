@@ -20,65 +20,81 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
-    /* فيديو الخلفية */
-    #bgVideo {
+    /* حاوية الفيديو للتوسيط التام */
+    .video-container {
       position: fixed;
-      right: 0;
-      bottom: 0;
-      min-width: 100%;
-      min-height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       z-index: 1;
-      object-fit: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+      overflow: hidden;
     }
 
-    /* طبقة تغميق خفيفة */
+    #bgVideo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* يضمن ظهور كامل الفيديو بالسنتر بدون قص أي جزء */
+      background: #000;
+    }
+
+    /* طبقة تغميق خفيفة جداً لتحسين وضوح الفيديو والخلفية */
     .overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.45);
+      background: rgba(0, 0, 0, 0.15);
       z-index: 2;
+      pointer-events: none;
     }
 
-    /* المحتوى فوق الفيديو */
+    /* المحتوى فوق الفيديو (مرتب أسفل الشاشة لكي لا يغطي محتوى الفيديو الأساسي) */
     .content {
       position: fixed;
-      top: 0;
+      bottom: 25px;
       left: 0;
       width: 100%;
-      height: 100%;
       z-index: 3;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
       text-align: center;
-      padding: 20px;
+      padding: 0 20px;
+      pointer-events: none;
+    }
+
+    .content > * {
+      pointer-events: auto; /* إعادة تفعيل التفاعل للأزرار والنصوص */
     }
 
     h2 {
-      margin-bottom: 25px;
+      margin-bottom: 15px;
       color: #d4af37;
       font-family: 'Cinzel', serif;
-      font-size: 3rem;
+      font-size: 1.8rem;
       font-style: italic;
       font-weight: 700;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.9);
+      text-shadow: 0 3px 15px rgba(0,0,0,0.9);
     }
 
     .skip-btn {
       display: inline-block;
       background: #d4af37;
       color: #000;
-      padding: 14px 35px;
-      font-size: 1.1rem;
+      padding: 12px 30px;
+      font-size: 1rem;
       font-weight: 700;
       border-radius: 8px;
       text-decoration: none;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.7);
     }
 
     .skip-btn:hover {
@@ -86,13 +102,13 @@
       transform: translateY(-2px);
     }
 
-    /* زر تفعيل الصوت الشفاف للشاشة */
+    /* زر تفعيل الصوت */
     .sound-btn {
       position: fixed;
       top: 20px;
       left: 20px;
       z-index: 10;
-      background: rgba(212, 175, 55, 0.8);
+      background: rgba(212, 175, 55, 0.9);
       color: #000;
       border: none;
       padding: 10px 15px;
@@ -113,19 +129,22 @@
 </head>
 <body>
 
-  <!-- زر لفتح الصوت إجباري في حال منعه المتصفح -->
+  <!-- زر تفعيل الصوت -->
   <button class="sound-btn" id="soundToggle">
     <i class="fas fa-volume-mute" id="soundIcon"></i> <span id="soundText">تفعيل الصوت</span>
   </button>
 
-  <!-- الفيديو بدون muted -->
-  <video autoplay controls playsinline id="bgVideo">
-    <source src="./add-video.mp4" type="video/mp4">
-    متصفحك لا يدعم عرض الفيديو.
-  </video>
+  <!-- حاوية الفيديو للتوسيط التام -->
+  <div class="video-container">
+    <video autoplay muted playsinline webkit-playsinline id="bgVideo">
+      <source src="./add-video.mp4" type="video/mp4">
+      متصفحك لا يدعم عرض الفيديو.
+    </video>
+  </div>
 
   <div class="overlay"></div>
 
+  <!-- النص وزر الانتقال أصبحا فوق الفيديو بالأسفل -->
   <div class="content">
     <h2>Lebanese Online Academy</h2>
     <div>
@@ -141,17 +160,16 @@
     const soundIcon = document.getElementById('soundIcon');
     const soundText = document.getElementById('soundText');
 
-    // محاولة تشغيل الصوت تلقائياً، وإذا منعه المتصفح، الزر بيحلها
-    video.muted = false;
-    video.play().catch(() => {
-      video.muted = true; // إذا المتصفح حظره، بنكتمه مؤقتاً لتشتغل الصفحة
-      soundText.innerText = "انقر لتفعيل الصوت";
+    // تشغيل الفيديو تلقائياً (صامتاً ليتوافق مع قيود الهواتف)
+    video.play().catch(error => {
+      console.log("Autoplay was prevented:", error);
     });
 
     // تفاعل زر الصوت
     soundToggle.addEventListener('click', function() {
       if (video.muted) {
         video.muted = false;
+        video.play();
         soundIcon.className = "fas fa-volume-up";
         soundText.innerText = "الصوت مَفعل";
       } else {
