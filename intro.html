@@ -154,16 +154,21 @@
     </div>
   </div>
 
-  <script>
+ <script>
     const video = document.getElementById('bgVideo');
     const soundToggle = document.getElementById('soundToggle');
     const soundIcon = document.getElementById('soundIcon');
     const soundText = document.getElementById('soundText');
 
-    // تشغيل الفيديو تلقائياً (صامتاً ليتوافق مع قيود الهواتف)
-    video.play().catch(error => {
-      console.log("Autoplay was prevented:", error);
-    });
+    // محاولة تشغيل الفيديو مع معالجة حظر المتصفح
+    let playPromise = video.play();
+
+    if (playPromise !== undefined) {
+      playPromise.catch(error => {
+        // إذا المتصفح حظر التشغيل التلقائي، بنخليه يظهر الفيديو بدون ما يحولنا فوراً
+        console.log("Autoplay prevented:", error);
+      });
+    }
 
     // تفاعل زر الصوت
     soundToggle.addEventListener('click', function() {
@@ -179,7 +184,7 @@
       }
     });
 
-    // الانتقال للصفحة الرئيسية عند نهاية الفيديو
+    // الانتقال للصفحة الرئيسية عند نهاية الفيديو الفعلي فقط
     video.addEventListener('ended', function() {
       window.location.href = 'index.html';
     });
