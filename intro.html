@@ -134,9 +134,9 @@
     <i class="fas fa-volume-mute" id="soundIcon"></i> <span id="soundText">تفعيل الصوت</span>
   </button>
 
-  <!-- حاوية الفيديو للتوسيط التام -->
+ <!-- حاوية الفيديو والتوسيط -->
   <div class="video-container">
-    <video autoplay muted playsinline webkit-playsinline id="bgVideo">
+    <video autoplay muted playsinline id="bgVideo">
       <source src="./videos/add-video.mp4" type="video/mp4">
       متصفحك لا يدعم عرض الفيديو.
     </video>
@@ -144,7 +144,6 @@
 
   <div class="overlay"></div>
 
-  <!-- النص وزر الانتقال أصبحا فوق الفيديو بالأسفل -->
   <div class="content">
     <h2>Lebanese Online Academy</h2>
     <div>
@@ -154,37 +153,15 @@
     </div>
   </div>
 
- <script>
+  <script>
     const video = document.getElementById('bgVideo');
-    const soundToggle = document.getElementById('soundToggle');
-    const soundIcon = document.getElementById('soundIcon');
-    const soundText = document.getElementById('soundText');
 
-    // محاولة تشغيل الفيديو مع معالجة حظر المتصفح
-    let playPromise = video.play();
-
-    if (playPromise !== undefined) {
-      playPromise.catch(error => {
-        // إذا المتصفح حظر التشغيل التلقائي، بنخليه يظهر الفيديو بدون ما يحولنا فوراً
-        console.log("Autoplay prevented:", error);
-      });
-    }
-
-    // تفاعل زر الصوت
-    soundToggle.addEventListener('click', function() {
-      if (video.muted) {
-        video.muted = false;
-        video.play();
-        soundIcon.className = "fas fa-volume-up";
-        soundText.innerText = "الصوت مَفعل";
-      } else {
-        video.muted = true;
-        soundIcon.className = "fas fa-volume-mute";
-        soundText.innerText = "تفعيل الصوت";
-      }
+    // إجبار الفيديو على التشغيل والتأكد من عدم التحويل الخاطئ
+    video.play().catch(() => {
+      console.log("Autoplay restricted, waiting for user interaction");
     });
 
-    // الانتقال للصفحة الرئيسية عند نهاية الفيديو الفعلي فقط
+    // الانتقال حصرياً عند انتهاء الفيديو الفعلي
     video.addEventListener('ended', function() {
       window.location.href = 'index.html';
     });
