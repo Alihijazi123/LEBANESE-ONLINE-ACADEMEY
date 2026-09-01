@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // إنشاء لوحة التحكم خفياً ولا تظهر إلا بعد تسجيل الدخول الصحيح
+  // إنشاء لوحة التحكم مع خانة لاختيار صورة من المعرض (Gallery)
   function createAdminPanelUI() {
     if (document.getElementById('secretAdminPanel')) return;
 
@@ -31,12 +31,57 @@ document.addEventListener('DOMContentLoaded', () => {
       <div id="secretAdminPanel" style="max-width: 900px; margin: 0 auto 30px; padding: 25px; border: 1px solid #d4af37; border-radius: 12px; background: rgba(20, 20, 20, 0.95);">
         <h3 style="color: #d4af37; margin-bottom: 15px;"><i class="fas fa-user-shield"></i> Admin Control Panel</h3>
         <form id="addTeacherForm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+          
+          <!-- اسم الأستاذ -->
           <input type="text" id="newTeacherName" placeholder="Teacher Full Name" required style="padding: 10px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff;">
-          <input type="text" id="newTeacherSubject" placeholder="Subject / Specialty" required style="padding: 10px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff;">
-          <input type="text" id="newTeacherGrades" placeholder="Grades (e.g. Grade 9, 10)" required style="padding: 10px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff;">
-          <input type="text" id="newTeacherLocation" placeholder="Location (e.g. Saida)" required style="padding: 10px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff;">
+          
+          <!-- قائمة المواد المنسدلة -->
+          <select id="newTeacherSubject" required style="padding: 10px; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff;">
+            <option value="" disabled selected>Select Subject</option>
+            <option value="Mathematics">Mathematics</option>
+            <option value="Physics">Physics</option>
+            <option value="Chemistry">Chemistry</option>
+            <option value="Biology">Biology</option>
+            <option value="English">English</option>
+            <option value="Arabic">Arabic</option>
+            <option value="French">French</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="History & Geography">History & Geography</option>
+          </select>
+
+          <!-- قائمة الصفوف المنسدلة -->
+          <select id="newTeacherGrades" required style="padding: 10px; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff;">
+            <option value="" disabled selected>Select Grade</option>
+            <option value="Grade 7">Grade 7</option>
+            <option value="Grade 8">Grade 8</option>
+            <option value="Grade 9 (Brevet)">Grade 9 (Brevet)</option>
+            <option value="Grade 10">Grade 10</option>
+            <option value="Grade 11">Grade 11</option>
+            <option value="Grade 12 (Terminale)">Grade 12 (Terminale)</option>
+            <option value="All Grades">All Grades</option>
+          </select>
+
+          <!-- قائمة المناطق المنسدلة -->
+          <select id="newTeacherLocation" required style="padding: 10px; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff;">
+            <option value="" disabled selected>Select Location</option>
+            <option value="Saida">Saida</option>
+            <option value="Beirut">Beirut</option>
+            <option value="Tripoli">Tripoli</option>
+            <option value="Tyre">Tyre</option>
+            <option value="Nabatieh">Nabatieh</option>
+            <option value="Online / All Lebanon">Online / All Lebanon</option>
+          </select>
+
+          <!-- رقم الهاتف -->
           <input type="text" id="newTeacherPhone" placeholder="Phone (+961 ...)" required style="padding: 10px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff;">
-          <input type="text" id="newTeacherImage" placeholder="Image URL (optional)" style="padding: 10px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff;">
+          
+          <!-- اختيار صورة من المعرض (Gallery) -->
+          <div style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 5px;">
+            <label style="color: #d4af37; font-size: 0.9rem;">Teacher Photo (from Gallery):</label>
+            <input type="file" id="newTeacherImage" accept="image/*" style="padding: 8px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff; cursor: pointer;">
+          </div>
+          
+          <!-- زر الإضافة -->
           <button type="submit" style="grid-column: 1 / -1; padding: 12px; cursor: pointer; background: #d4af37; color: #000; font-weight: bold; border: none; border-radius: 6px;">Add Teacher</button>
         </form>
       </div>
@@ -50,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // عرض الأساتذة (أزرار الحذف تظهر فقط للأدمن)
+  // عرض الأساتذة
   function renderTeachers(list) {
     if (!teachersGrid) return;
     teachersGrid.innerHTML = '';
@@ -93,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // جلب البيانات من السيرفر
+  // جلب البيانات من السيرفر الأونلاين
   async function loadTeachersFromDB() {
     if (!teachersGrid) return;
     teachersGrid.innerHTML = '<p style="color: #fff; text-align: center; grid-column: 1/-1;">Loading teachers...</p>';
@@ -129,29 +174,32 @@ document.addEventListener('DOMContentLoaded', () => {
   if (searchInput) searchInput.addEventListener('input', filterTeachers);
   if (gradeSelect) gradeSelect.addEventListener('change', filterTeachers);
 
-  // إضافة أستاذ جديد (للأدمن فقط)
+  // إضافة أستاذ جديد مع دعم رفع الصورة من المعرض (Gallery)
   async function handleAddTeacher(e) {
     e.preventDefault();
-    const newTeacher = {
-      name: document.getElementById('newTeacherName').value.trim(),
-      subject: document.getElementById('newTeacherSubject').value.trim(),
-      grades: document.getElementById('newTeacherGrades').value.trim(),
-      location: document.getElementById('newTeacherLocation').value.trim(),
-      phone: document.getElementById('newTeacherPhone').value.trim(),
-      image: document.getElementById('newTeacherImage').value.trim() || ''
-    };
+    
+    const formData = new FormData();
+    formData.append('name', document.getElementById('newTeacherName').value.trim());
+    formData.append('subject', document.getElementById('newTeacherSubject').value);
+    formData.append('grades', document.getElementById('newTeacherGrades').value);
+    formData.append('location', document.getElementById('newTeacherLocation').value);
+    formData.append('phone', document.getElementById('newTeacherPhone').value.trim());
+    
+    const imageFile = document.getElementById('newTeacherImage').files[0];
+    if (imageFile) {
+      formData.append('image', imageFile);
+    }
 
     try {
       const response = await fetch(API_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newTeacher)
+        body: formData // إرسال البيانات مباشرة كـ FormData لتشمل الصورة والملفات
       });
 
       if (response.ok) {
         document.getElementById('addTeacherForm').reset();
         loadTeachersFromDB();
-        alert('Teacher added successfully!');
+        alert('Teacher added successfully with image!');
       } else {
         alert('Failed to add teacher.');
       }
@@ -160,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // حذف أستاذ (للأدمن فقط)
+  // حذف أستاذ عبر السيرفر أونلاين
   function attachDeleteEvents() {
     document.querySelectorAll('.btn-delete-teacher').forEach(btn => {
       btn.addEventListener('click', async function() {
