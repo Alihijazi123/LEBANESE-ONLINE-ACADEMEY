@@ -139,3 +139,41 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 });
+async function handleAddTeacher(e) {
+    e.preventDefault();
+    
+    const subjectSelect = document.getElementById('newTeacherSubject');
+    const selectedSubjects = Array.from(subjectSelect.selectedOptions).map(opt => opt.value);
+
+    const gradesSelect = document.getElementById('newTeacherGrades');
+    const selectedGrades = Array.from(gradesSelect.selectedOptions).map(opt => opt.value);
+
+    const teacherData = {
+      name: document.getElementById('newTeacherName').value.trim(),
+      subject: selectedSubjects.join(', '),
+      grades: selectedGrades.join(', '),
+      location: document.getElementById('newTeacherLocation').value.trim(),
+      phone: document.getElementById('newTeacherPhone').value.trim(),
+      image: './images/photo_2026-08-29_00-56-35.jpg' // صورة افتراضية حالياً لتتأكد أن كل البيانات بتصل
+    };
+
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(teacherData)
+      });
+
+      if (response.ok) {
+        document.getElementById('addTeacherForm').reset();
+        loadTeachersFromDB();
+        alert('Teacher added successfully!');
+      } else {
+        alert('Failed to add teacher.');
+      }
+    } catch (err) {
+      console.error('Error adding teacher:', err);
+    }
+  }

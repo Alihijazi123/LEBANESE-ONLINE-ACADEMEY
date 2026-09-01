@@ -1,16 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const API_URL = 'https://lebanese-online-academey.onrender.com/api/teachers';
+ const API_URL = 'https://lebanese-online-academey.onrender.com/api/teachers';
   const teachersGrid = document.getElementById('teachersGrid');
   const searchInput = document.getElementById('teacherSearch');
   const gradeSelect = document.getElementById('gradeFilter');
 
   let allTeachers = [];
-  let isAdmin = false; // القيمة افتراضياً للزوار (مغلق)
+  let isAdmin = false; 
 
-  // 🔐 كلمة المرور الخاصة بك كأدمن
   const adminPassword = "ali_admin_2026";
 
-  // أمر سري لتفعيل وضع الأدمن من المتصفح (عبر الـ Console)
   window.enableAdminMode = function() {
     const pwd = prompt("Enter Admin Password:");
     if (pwd === adminPassword) {
@@ -23,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // إنشاء لوحة التحكم
   function createAdminPanelUI() {
     if (document.getElementById('secretAdminPanel')) return;
 
@@ -32,48 +29,45 @@ document.addEventListener('DOMContentLoaded', () => {
         <h3 style="color: #d4af37; margin-bottom: 15px;"><i class="fas fa-user-shield"></i> Admin Control Panel</h3>
         <form id="addTeacherForm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
           
-          <!-- اسم الأستاذ -->
           <input type="text" id="newTeacherName" placeholder="Teacher Full Name" required style="padding: 10px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff;">
           
-          <!-- قائمة المواد المنسدلة -->
-          <select id="newTeacherSubject" required style="padding: 10px; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff;">
-            <option value="" disabled selected>Select Subject</option>
-            <option value="Mathematics">Mathematics</option>
-            <option value="Physics">Physics</option>
-            <option value="Chemistry">Chemistry</option>
-            <option value="Biology">Biology</option>
-            <option value="English">English</option>
-            <option value="Arabic">Arabic</option>
-            <option value="French">French</option>
-            <option value="Computer Science">Computer Science</option>
-            <option value="History & Geography">History & Geography</option>
-          </select>
+          <div style="display: flex; flex-direction: column; gap: 5px;">
+            <label style="color: #d4af37; font-size: 0.85rem;">Subjects (Hold Ctrl to select multiple):</label>
+            <select id="newTeacherSubject" multiple required style="padding: 10px; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff; height: 110px;">
+              <option value="Mathematics">Mathematics</option>
+              <option value="Physics">Physics</option>
+              <option value="Chemistry">Chemistry</option>
+              <option value="Biology">Biology</option>
+              <option value="English">English</option>
+              <option value="Arabic">Arabic</option>
+              <option value="French">French</option>
+              <option value="Computer Science">Computer Science</option>
+              <option value="History & Geography">History & Geography</option>
+            </select>
+          </div>
 
-          <!-- قائمة الصفوف المنسدلة -->
-          <select id="newTeacherGrades" required style="padding: 10px; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff;">
-            <option value="" disabled selected>Select Grade</option>
-            <option value="Grade 7">Grade 7</option>
-            <option value="Grade 8">Grade 8</option>
-            <option value="Grade 9 (Brevet)">Grade 9 (Brevet)</option>
-            <option value="Grade 10">Grade 10</option>
-            <option value="Grade 11">Grade 11</option>
-            <option value="Grade 12 (Terminale)">Grade 12 (Terminale)</option>
-            <option value="All Grades">All Grades</option>
-          </select>
+          <div style="display: flex; flex-direction: column; gap: 5px;">
+            <label style="color: #d4af37; font-size: 0.85rem;">Grades (Hold Ctrl to select multiple):</label>
+            <select id="newTeacherGrades" multiple required style="padding: 10px; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff; height: 110px;">
+              <option value="Grade 7">Grade 7</option>
+              <option value="Grade 8">Grade 8</option>
+              <option value="Grade 9 (Brevet)">Grade 9 (Brevet)</option>
+              <option value="Grade 10">Grade 10</option>
+              <option value="Grade 11">Grade 11</option>
+              <option value="Grade 12 (Terminale)">Grade 12 (Terminale)</option>
+              <option value="All Grades">All Grades</option>
+            </select>
+          </div>
 
-          <!-- منطقة العمل (كتابة يدوية حرة) -->
           <input type="text" id="newTeacherLocation" placeholder="Location (e.g. Saida, Beirut)" required style="padding: 10px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff;">
 
-          <!-- رقم الهاتف -->
           <input type="text" id="newTeacherPhone" placeholder="Phone (+961 ...)" required style="padding: 10px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff;">
           
-          <!-- اختيار صورة من المعرض (Gallery) -->
           <div style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 5px;">
             <label style="color: #d4af37; font-size: 0.9rem;">Teacher Photo (from Gallery):</label>
             <input type="file" id="newTeacherImage" accept="image/*" style="padding: 8px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff; cursor: pointer;">
           </div>
           
-          <!-- زر الإضافة -->
           <button type="submit" style="grid-column: 1 / -1; padding: 12px; cursor: pointer; background: #d4af37; color: #000; font-weight: bold; border: none; border-radius: 6px;">Add Teacher</button>
         </form>
       </div>
@@ -87,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // عرض الأساتذة
   function renderTeachers(list) {
     if (!teachersGrid) return;
     teachersGrid.innerHTML = '';
@@ -103,20 +96,44 @@ document.addEventListener('DOMContentLoaded', () => {
       card.style.cssText = 'padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); text-align: center;';
 
       const deleteButtonHTML = isAdmin ? `
-        <button class="btn-delete-teacher" data-id="${t._id}" style="display: block; width: 100%; margin-top: 15px; padding: 8px; background: #e63946; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85rem;">
+        <button class="btn-delete-teacher" data-id="${t._id || t.id}" style="display: block; width: 100%; margin-top: 15px; padding: 8px; background: #e63946; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85rem;">
           <i class="fas fa-trash"></i> Delete Teacher
         </button>` : '';
 
+      const teacherName = t.name || t.teacherName || 'Unnamed Teacher';
+      
+      let teacherSubject = 'Not Specified';
+      if (Array.isArray(t.subject)) {
+        teacherSubject = t.subject.join(', ');
+      } else if (typeof t.subject === 'string') {
+        teacherSubject = t.subject;
+      } else if (t.subjects) {
+        teacherSubject = Array.isArray(t.subjects) ? t.subjects.join(', ') : t.subjects;
+      }
+
+      let teacherGrades = 'Not Specified';
+      if (Array.isArray(t.grades)) {
+        teacherGrades = t.grades.join(', ');
+      } else if (typeof t.grades === 'string') {
+        teacherGrades = t.grades;
+      } else if (t.grade) {
+        teacherGrades = Array.isArray(t.grade) ? t.grade.join(', ') : t.grade;
+      }
+
+      const teacherLocation = t.location || t.city || 'Lebanon';
+      const teacherPhone = t.phone || t.phoneNumber || '';
+      const cleanPhone = teacherPhone.replace(/[^0-9]/g, '');
+
       card.innerHTML = `
         <div style="width: 90px; height: 90px; margin: 0 auto 15px; border-radius: 50%; overflow: hidden; border: 2px solid #d4af37;">
-          <img src="${t.image || './images/photo_2026-08-29_00-56-35.jpg'}" alt="${t.name}" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="${t.image || t.imageUrl || './images/photo_2026-08-29_00-56-35.jpg'}" alt="${teacherName}" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
-        <h3 style="color: #d4af37; margin-bottom: 8px;">${t.name}</h3>
-        <p style="margin: 4px 0; font-size: 0.95rem; color:#fff;"><strong>Subject:</strong> ${t.subject}</p>
-        <p style="margin: 4px 0; font-size: 0.95rem; color:#fff;"><strong>Grades:</strong> ${t.grades}</p>
-        <p style="margin: 4px 0; font-size: 0.95rem; color:#fff;"><strong>Location:</strong> ${t.location}</p>
+        <h3 style="color: #d4af37; margin-bottom: 8px;">${teacherName}</h3>
+        <p style="margin: 4px 0; font-size: 0.95rem; color:#fff;"><strong>Subject:</strong> ${teacherSubject}</p>
+        <p style="margin: 4px 0; font-size: 0.95rem; color:#fff;"><strong>Grades:</strong> ${teacherGrades}</p>
+        <p style="margin: 4px 0; font-size: 0.95rem; color:#fff;"><strong>Location:</strong> ${teacherLocation}</p>
         
-        <a href="https://wa.me/${t.phone ? t.phone.replace(/[^0-9]/g, '') : ''}" target="_blank" style="display: inline-block; margin-top: 12px; padding: 8px 16px; background: #25d366; color: #fff; text-decoration: none; border-radius: 6px; font-weight: 600;">
+        <a href="https://wa.me/${cleanPhone}" target="_blank" style="display: inline-block; margin-top: 12px; padding: 8px 16px; background: #25d366; color: #fff; text-decoration: none; border-radius: 6px; font-weight: 600;">
           <i class="fab fa-whatsapp"></i> WhatsApp
         </a>
 
@@ -130,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // جلب البيانات من السيرفر الأونلاين
   async function loadTeachersFromDB() {
     if (!teachersGrid) return;
     teachersGrid.innerHTML = '<p style="color: #fff; text-align: center; grid-column: 1/-1;">Loading teachers...</p>';
@@ -145,23 +161,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // الفلترة والبحث الذكي للزوار (يدعم البحث بأي ترتيب للكلمات مثل "math saida")
   function filterTeachers() {
     const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
     const selectedGrade = gradeSelect ? gradeSelect.value : 'all';
-
-    // تقسيم كلمات البحث لتسهيل العثور على النتائج بغض النظر عن الترتيب
     const searchWords = searchTerm ? searchTerm.split(/\s+/) : [];
 
     const filtered = allTeachers.filter(t => {
-      const matchText = (t.name + ' ' + t.subject + ' ' + t.location + ' ' + t.grades).toLowerCase();
+      const nameStr = t.name || '';
+      const subStr = Array.isArray(t.subject) ? t.subject.join(' ') : (t.subject || '');
+      const gradeStr = Array.isArray(t.grades) ? t.grades.join(' ') : (t.grades || '');
+      const locStr = t.location || '';
+
+      const matchText = (nameStr + ' ' + subStr + ' ' + locStr + ' ' + gradeStr).toLowerCase();
       
-      // التحقق من أن كل الكلمات المدخلة موجودة ضمن بيانات الأستاذ
       const matchesSearch = searchWords.every(word => matchText.includes(word));
 
       let matchesGrade = true;
       if (selectedGrade !== 'all') {
-        matchesGrade = (t.grades || '').toLowerCase().includes(selectedGrade);
+        matchesGrade = matchText.includes(selectedGrade.toLowerCase());
       }
       return matchesSearch && matchesGrade;
     });
@@ -172,14 +189,19 @@ document.addEventListener('DOMContentLoaded', () => {
   if (searchInput) searchInput.addEventListener('input', filterTeachers);
   if (gradeSelect) gradeSelect.addEventListener('change', filterTeachers);
 
-  // إضافة أستاذ جديد
   async function handleAddTeacher(e) {
     e.preventDefault();
     
+    const subjectSelect = document.getElementById('newTeacherSubject');
+    const selectedSubjects = Array.from(subjectSelect.selectedOptions).map(opt => opt.value);
+
+    const gradesSelect = document.getElementById('newTeacherGrades');
+    const selectedGrades = Array.from(gradesSelect.selectedOptions).map(opt => opt.value);
+
     const formData = new FormData();
     formData.append('name', document.getElementById('newTeacherName').value.trim());
-    formData.append('subject', document.getElementById('newTeacherSubject').value);
-    formData.append('grades', document.getElementById('newTeacherGrades').value);
+    formData.append('subject', selectedSubjects.join(', '));
+    formData.append('grades', selectedGrades.join(', '));
     formData.append('location', document.getElementById('newTeacherLocation').value.trim());
     formData.append('phone', document.getElementById('newTeacherPhone').value.trim());
     
@@ -206,7 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // حذف أستاذ عبر السيرفر أونلاين
   function attachDeleteEvents() {
     document.querySelectorAll('.btn-delete-teacher').forEach(btn => {
       btn.addEventListener('click', async function() {

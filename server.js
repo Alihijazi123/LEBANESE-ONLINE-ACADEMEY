@@ -1,20 +1,22 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const multer = require('multer');
 require('dotenv').config();
 
 const app = express();
 
-// Middleware
-app.use(express.json()); // فهم بيانات الـ JSON القادمة من الفرونت إند
-app.use(cors());         // السماح بربط الفرونت إند بالباك إند
+app.use(express.json());
+app.use(cors());
 
-// الاتصال بقاعدة بيانات MongoDB عبر Mongoose
+// إعداد التخزين المؤقت للصور عبر Multer
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('✅ Connected to MongoDB successfully!'))
   .catch((err) => console.error('❌ MongoDB connection error:', err));
 
-// تصميم شكل البيانات (Schema & Model) للأساتذة
 const teacherSchema = new mongoose.Schema({
   name: String,
   subject: String,
@@ -26,14 +28,6 @@ const teacherSchema = new mongoose.Schema({
 
 const Teacher = mongoose.model('Teacher', teacherSchema);
 
-// --- الـ API Routes (الجسور بين الفرونت والباك) ---
-
-// 0. مسار ترحيبي للتأكد أن السيرفر يعمل عند زيارة الرابط الأساسي
-app.get('/', (req, res) => {
-  res.send('🚀 Lebanese Online Academy Backend is running successfully!');
-});
-
-// 1. جلب كل الأساتذة (GET)
 app.get('/api/teachers', async (req, res) => {
   try {
     const teachers = await Teacher.find();
@@ -43,18 +37,36 @@ app.get('/api/teachers', async (req, res) => {
   }
 });
 
-// 2. إضافة أستاذ جديد (POST)
-app.post('/api/teachers', async (req, res) => {
+// استقبال البيانات عبر FormData مع Multer لقراءة الحقول بشكل صحيح
+app.post('/api/teachers', upload.single('image'), async (req, res) => {
   try {
-    const newTeacher = new Teacher(req.body);
+    const { name, subject, grades, location, phone } = req.body;
+    
+    let imagePath = './images/photo_2026-08-29_00-56-35.jpg'; // صورة افتراضية
+
+    // إذا تم رفع صورة، يمكن حفظها أو استخدام رابط افتراضي مؤقت ريثما نربطه برابط سحابي
+    if (req.file) {
+      // حالياً سنضع مسار افتراضي أو اسم الملف لضمان عدم حدوث أي خطأ
+      imagePath = './images/photo_2026-08-29_00-56-35.jpg';
+    }
+
+    const newTeacher = new Teacher({
+      name,
+      subject,
+      grades,
+      location,
+      phone,
+      image: imagePath
+    });
+
     const savedTeacher = await newTeacher.save();
     res.status(201).json(savedTeacher);
   } catch (err) {
+    console.error('Error adding teacher:', err);
     res.status(400).json({ error: 'Failed to add teacher' });
   }
 });
 
-// 3. حذف أستاذ بواسطة الـ ID (DELETE)
 app.delete('/api/teachers/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -65,7 +77,6 @@ app.delete('/api/teachers/:id', async (req, res) => {
   }
 });
 
-// تشغيل السيرفر (يعتمد على منفذ Render أو المنفذ 5000 محلياً)
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on port ${PORT}`);

@@ -430,20 +430,24 @@
       <div class="gold-line"></div>
     </div>
 
-   <!-- Search & Filter Controls -->
+    <!-- Search & Filter Controls -->
     <div class="teachers-controls" data-aos="fade-up" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 25px;">
       <div class="search-box-wrapper">
-        <input type="text" id="teacherSearch" placeholder="Search by name, subject, or location (e.g. Saida)...">
+        <input type="text" id="teacherSearch" placeholder="Search by name, subject, or location (e.g. Saida)..." style="padding: 10px 15px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; width: 300px;">
       </div>
       
       <div>
-        
-        </button>
+        <select id="gradeFilter" style="padding: 10px 15px; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; cursor: pointer;">
+          <option value="all">All Grades</option>
+          <option value="Grade 7">Grade 7</option>
+          <option value="Grade 8">Grade 8</option>
+          <option value="Grade 9">Grade 9 (Brevet)</option>
+          <option value="Grade 10">Grade 10</option>
+          <option value="Grade 11">Grade 11</option>
+          <option value="Grade 12">Grade 12 (Terminale)</option>
+        </select>
       </div>
     </div>
-
-  
-  
    
     <!-- Dynamic Grid where teachers load -->
     <div class="teachers-grid compact-grid" id="teachersGrid"></div>
@@ -493,8 +497,9 @@
       </form>
     </div>
   </section>
+
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="script.js"></script>
-<script src="admin.js"></script>
+  <script src="script.js"></script>
+  <script src="admin.js"></script>
 </body>
 </html>
