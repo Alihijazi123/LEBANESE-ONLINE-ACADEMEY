@@ -32,16 +32,7 @@ body {
 }
 
 /* Custom Scroll Reveal Animation Enhancement */
-section {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1.8s ease-out, transform 3.8s ease-out;
-}
 
-section.aos-animate, section.section-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 /* Modal Popup Styling */
 .course-modal {
@@ -84,22 +75,7 @@ section.aos-animate, section.section-visible {
   font-weight: bold;
 }
 
-/* Floating Math Symbols Background */
-.math-bg-symbols span {
-  position: absolute;
-  color: rgba(212, 175, 55, 0.04);
-  font-family: var(--font-heading);
-  font-size: 4rem;
-  font-weight: 700;
-  user-select: none;
-  pointer-events: none;
-  animation: floatMath 12s infinite ease-in-out alternate;
-}
 
-@keyframes floatMath {
-  0% { transform: translateY(0) rotate(0deg); }
-  100% { transform: translateY(-25px) rotate(10deg); }
-}
 
 /* Glassmorphism Styling */
 .glass-card {
@@ -218,7 +194,7 @@ section.aos-animate, section.section-visible {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 8%;
+  padding: 0.5rem 8%;
   position: fixed;
   top: 0;
   width: 100%;
@@ -406,6 +382,21 @@ section {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-family: ;
+}
+
+.stat-card h3.success-state::after {
+  content: "%";
+  color: #d4af37 !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.8em; /* لحتى تكون متناسقة مع حجم الرقم العريض */
+}
+
+.stat-card h3.interactive-stat::after {
+  content: "%";
+  color: #d4af37 !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.8em;
 }
 
 /* --- Courses Section --- */
@@ -512,6 +503,16 @@ section {
 /* زووم الصورة داخلياً مع حركة الكرت */
 .course-card:hover .course-img-wrapper img {
   transform: scale(1.1);
+}
+.gift-text1 {
+  font-weight: border;
+  font-family: var(--font-heading);
+  color: gold;
+}
+  .gift-text2 {
+    font-family: var(--font-heading)!important;
+  font-weight: 200 !important;
+    font-size: 20px;
 }
 
 .level-tag {
@@ -888,6 +889,254 @@ footer {
   background: var(--gold-primary);
 }
 
+
+/* Teachers Section & Compact Cards */
+.teachers-section {
+  padding: 100px 5%;
+  background: rgba(10, 10, 10, 0.7);
+  position: relative;
+}
+
+.teachers-controls {
+  max-width: 900px;
+  margin: 0 auto 30px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.search-box-wrapper {
+  flex: 1;
+  min-width: 250px;
+}
+
+.teachers-controls input,
+.teachers-controls select {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.9rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.teachers-controls input:focus,
+.teachers-controls select:focus {
+  outline: none;
+  border-color: var(--gold-color);
+}
+
+.teachers-controls select option {
+  background: #111;
+  color: #fff;
+}
+
+.compact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+  gap: 20px !important;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.teacher-card.compact {
+  padding: 20px 15px !important;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.teacher-card.compact:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold-color);
+}
+
+.teacher-card.compact .teacher-img {
+  width: 80px !important;
+  height: 80px !important;
+  margin: 0 auto 12px !important;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--gold-color);
+}
+
+.teacher-card.compact .teacher-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholder-img {
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.teacher-card.compact h3 {
+  font-size: 1.1rem !important;
+  margin-bottom: 3px !important;
+  color: #fff;
+}
+
+.teacher-card.compact > p {
+  font-size: 0.8rem !important;
+  margin-bottom: 12px !important;
+  color: var(--gold-color);
+  font-weight: 600;
+}
+
+.teacher-card.compact .teacher-details {
+  font-size: 0.8rem !important;
+  padding: 10px !important;
+  margin-bottom: 15px !important;
+  gap: 6px !important;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.teacher-card.compact .teacher-details div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+}
+
+.teacher-card.compact .teacher-details strong {
+  color: #fff;
+}
+
+.rating-box {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 10px;
+}
+
+.rating-box .stars {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 4px;
+}
+
+.rating-box .stars i {
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.rating-box .stars i:hover {
+  transform: scale(1.2);
+}
+
+.rating-count {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: block;
+}
+
+.rating-count .avg-score {
+  color: var(--gold-color);
+}
+
+/* Contact Section */
+.contact-section {
+  padding: 100px 5%;
+}
+
+.contact-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.contact-form {
+  padding: 40px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: var(--text-main);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+.menu-dropdown-container { 
+  position: relative; 
+  padding-left: 50px; 
+  padding-bottom: 2px;
+}
+.menu-dropdown-btn { 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+  cursor: pointer; 
+}
+.dropdown-content {
+  position: absolute; 
+  right: 0; 
+  top: 120%;
+  background: rgba(15, 15, 15, 0.98); 
+  backdrop-filter: blur(12px);
+  min-width: 220px; 
+  border-radius: 12px; 
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.8); 
+  display: none; /* مخفية افتراضياً */
+  flex-direction: column; 
+  padding: 10px 0; 
+  z-index: 9999; /* لتظهر فوق باقي العناصر */
+}
+.dropdown-content a { 
+  color: #fff; 
+  padding: 12px 20px; 
+  text-decoration: none; 
+  font-size: 0.95rem; 
+  transition: all 0.2s ease; 
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+}
+.dropdown-content a:hover { 
+  background: rgba(212, 175, 55, 0.15); 
+  color: #d4af37; 
+  padding-left: 25px; 
+}
+.dropdown-content a.dropdown-book { 
+  background: #d4af37; 
+  color: #000; 
+  font-weight: 600; 
+  margin: 8px 15px 0 15px; 
+  border-radius: 6px; 
+  justify-content: center; 
+}
+
+
+
+
 /* 6. تأثير التوهج المتقطع للـ Tags أو الـ Level-Tags المهمة */
 .level-tag.gold-badge {
   animation: goldBadgeGlow 2.5s infinite alternate;
@@ -914,11 +1163,20 @@ footer {
 }
 
 @media (max-width: 780px) {
-  .hero-content h1 { 
-    font-size: 2.1rem; 
+  .logo {
+    font-size: 1.3rem;
+  }
+    .hero-content h1 { 
+    font-size: 2rem; 
     line-height: 1.2;
   }
-  
+  .navbar{
+padding-bottom: 5px;
+  }
+  .menu-dropdown-container{
+    position: relative;
+    padding-right: 70px;
+  }
   .nav-links { 
     display: none; 
   }
@@ -926,7 +1184,8 @@ footer {
   section { 
     padding: 4rem 5% 2rem; 
   }
-
+ 
+  
   .courses-grid, .course-container, .cards-container {
     display: flex;
     flex-direction: column;
@@ -983,88 +1242,26 @@ footer {
   }
 }
 
-.live-sessions-section {
-  padding: 30px 20px;
-  background-color: transparent;
-  text-align: center;
-}
-
-.live-sessions-section h2 {
-  font-size: 2.2rem;
-  color: #ffffff;
-  margin-bottom: 10px;
-}
-
-.section-subtitle {
-  color: #ffffff;
-  margin-bottom: 40px;
-  font-size: 1.1rem;
-}
-
 .pricing-grid {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: row;
-  gap: 25px;
-  flex-wrap: wrap ;
+  gap: 15px;
+  flex-wrap: nowrap; /* منع نزول الكروت تحت بعضها نهائياً */
   align-items: stretch;
- 
+  overflow-x: auto; /* السماح بالتمرير الأفقي بسلاسة على الموبايل */
+  padding: 10px 5px 20px;
+  scroll-snap-type: x mandatory; /* لجعل التمرير يثبت على كل كارت بانتظام */
 }
 
 .price-card {
   background: transparent;
   border: 1px solid #e1e1e1;
   border-radius: 12px;
-  padding: 30px;
-  width: 300px;
+  padding: 25px;
+  flex: 0 0 260px; /* تثبيت عرض الكارت ليحافظ على تصميمه جنباً إلى جنب */
+  width: 150px;
+  scroll-snap-align: start;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.price-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  border-color: #d4af37;
-}
-
-.price-card.featured {
-  border-color: #d4af37; /* Gold accent la tneseb el theme le baddak yeh */
-  position: relative;
-}
-
-.price-card h3 {
-  font-size: 1.5rem;
-  color: #b8860b;
-  margin-bottom: 15px;
-}
-
-.price {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #d4af37;
-  margin-bottom: 20px;
-}
-
-.price span {
-  font-size: 1rem;
-  color: #777;
-  font-weight: normal;
-}
-
-.price-card p {
-  color: #ffffff;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  margin-bottom: 25px;
-}
-
-.book-btn {
-  display: inline-block;
-  background-color: #222;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: background-color 0.2s;
 }

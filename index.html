@@ -58,7 +58,7 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
-    .menu-dropdown-container { position: relative; }
+    .menu-dropdown-container { position: relative; padding-left: 50px; padding-bottom: 2px;}
     .menu-dropdown-btn { display: flex; align-items: center; gap: 8px; cursor: pointer; }
     .dropdown-content {
       position: absolute; right: 0; top: 120%;
@@ -75,22 +75,6 @@
 
 <body>
 
-  <div id="courseModal" class="course-modal">
-    <div class="modal-content glass-card">
-      <span class="close-modal">&times;</span>
-      <div id="modalBodyContent"><ul><li></li></ul></div>
-    </div>
-  </div>
-
-  <div class="math-bg-symbols">
-    <span style="top: 10%; left: 8%;">f(x)</span>
-    <span style="top: 25%; left: 85%;">∫</span>
-    <span style="top: 70%; left: 12%;">lim</span>
-    <span style="top: 80%; left: 80%;">π</span>
-    <span style="top: 45%; left: 90%;">∑</span>
-    <span style="top: 60%; left: 5%;">√x</span>
-  </div>
-
   <nav class="navbar" id="navbar">
     <div class="logo">
       <span class="logo-symbol">∑</span> Lebanese Online<span class="gold-text">Academy</span>
@@ -104,7 +88,7 @@
         <a href="#about"><i class="fas fa-user-tie gold-text"></i> About</a>
         <a href="#videos"><i class="fas fa-video gold-text"></i> Sample Videos</a>
         <a href="#courses"><i class="fas fa-graduation-cap gold-text"></i> Courses</a>
-        <a href="#dashboard"><i class="fas fa-chart-pie gold-text"></i> Dashboard</a>
+        <a href="#teachers"><i class="fas fa-chalkboard-teacher gold-text"></i> Teachers</a>
         <a href="#contact"><i class="fas fa-envelope gold-text"></i> Contact</a>
         <a href="#contact" class="dropdown-book"><i class="fab fa-whatsapp"></i> Book a Session</a>
       </div>
@@ -155,12 +139,12 @@
         </div>
         <div class="stat-card glass-card">
           <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
-          <h3 class="gold-text">98%</h3>
+          <h3 class="gold-text success-state">98</h3>
           <p>Success Rate</p>
         </div>
         <div class="stat-card glass-card">
           <div class="stat-icon"><i class="fas fa-laptop-code"></i></div>
-          <h3 class="gold-text">100%</h3>
+          <h3 class="gold-text interactive-stat">100</h3>
           <p>Online Interactive</p>
         </div>
       </div>
@@ -185,7 +169,7 @@
         </div>
         <div class="card-content" style="padding: 20px;">
           <span class="level-tag" style="background: var(--gold-color, #d4af37); color: #000; padding: 4px 10px; font-size: 0.8rem; border-radius: 4px; font-weight: 600;">Grade 9</span>
-          <h3 style="margin: 10px 0 5px; font-size: 1.2rem; color: #d4af37;">System of Two Equations Two Unkowns</h3>
+          <h3 style="margin: 10px 0 5px; font-size: 1.2rem; color: #d4af37;">System of Two Equations Two Unknowns</h3>
           <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 0;">A complete breakdown of official exam problems regarding exponential growth and integral applications.</p>
         </div>
       </div>
@@ -200,7 +184,7 @@
         <div class="card-content" style="padding: 20px;">
           <span class="level-tag" style="background: var(--gold-color, #d4af37); color: #000; padding: 4px 10px; font-size: 0.8rem; border-radius: 4px; font-weight: 600;">Grade 10</span>
           <h3 style="margin: 10px 0 5px; font-size: 1.2rem; color: #d4af37;">Inequalities</h3>
-          <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 0;">Inequality problem and it's Solution</p>
+          <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 0;">Inequality problem and its Solution</p>
         </div>
       </div>
     </div>
@@ -271,14 +255,26 @@
             </button>
             <div class="accordion-body">
               <ul class="topic-list">
-                <li>Sets, [10 free samples]</li>
+                <li>Sets</li>
                 <li>Absolute value and intervals</li>
-                <li>Order on R, Polynomial</li>
+                <li>Powers and Radicals</li>
+                <li>Order on R</li>
+                <li>Polynomial</li>
+                <li>Addition and Multiplication of a vector</li>
                 <li>Trigonometric circle and lines</li>
-                <li>Vectors and Coordinate system</li>
-                <li>Scalar Product, Straight line</li>
-                <li>Functions and Statistics</li>
+                <li>Coordinate system</li>
+                <li>Scalar Product</li>
+                <li>Equation of a straight line</li>
+                <li>Function</li>
+                <li>First degree equation and Inequalities in one unknown</li>
+                <li>Statistics</li>
+                <li>Linear systems</li>
+                <li>Study of function</li>
               </ul>
+              <p class="gift-text1"><i class="fas fa-gift" style="color: red;"></i> INCLUDED WITH YOUR ENROLLMENT</p>
+              <p><span class="gold-text">Bonus 1:</span> &nbsp; Video solutions for the exercises in "Building Up Mathematics" textbook.</p>
+              <br>
+              <p><span class="gold-text">Bonus 2:</span> &nbsp; Solutions for all unsolved samples in "Smart Plus" textbook.</p>
             </div>
           </div>
           <a href="#contact" class="btn-gold-sm">Enroll via WhatsApp</a>
@@ -300,11 +296,21 @@
             </button>
             <div class="accordion-body">
               <ul class="topic-list">
-                <li>Equations and Polynomials</li>
-                <li>Limits and Derivatives</li>
-                <li>Rational & Irrational functions</li>
+                <li>Equations and Polynomials of the second degree</li>
+                <li>Sign of the second degree trinomial Inequalities</li>
+                <li>Domain of Definition</li>
+                <li>Limits</li>
+                <li>Derivatives</li>
+                <li>Polynomial Functions</li>
+                <li>Rational and Irrational functions</li>
                 <li>Trigonometric equations</li>
-                <li>Numerical Sequence & Complex Numbers</li>
+                <li>Equation of a circle</li>
+                <li>Counting / Permutations</li>
+                <li>Probability 1</li>
+                <li>Probability 2</li>
+                <li>Numerical Sequence</li>
+                <li>Complex Numbers</li>
+                <li>Antiderivative</li>
               </ul>
             </div>
           </div>
@@ -326,11 +332,16 @@
               <span class="arrow">▼</span>
             </button>
             <div class="accordion-body">
-              <ul>
+              <ul class="topic-list">
                 <li>Distribution of 2 variables</li>
-                <li>Rational Functions & Derivatives</li>
-                <li>Logarithm & Exponential function</li>
-                <li>Combinations & Conditional Probability</li>
+                <li>Rational Functions</li>
+                <li>Derivatives</li>
+                <li>Composite and inverse function</li>
+                <li>Functions of Economics</li>
+                <li>Logarithm</li>
+                <li>Exponential function</li>
+                <li>Combinations</li>
+                <li>Conditional probability and total probability</li>
               </ul>
             </div>
           </div>
@@ -352,51 +363,25 @@
               <span class="arrow">▼</span>
             </button>
             <div class="accordion-body">
-              <ul>
-                <li>Continuous functions & Derivatives</li>
-                <li>Logarithm & Exponential Function</li>
-                <li>Integral & Methods of integration</li>
-                <li>Vector product, Planes and Lines</li>
+              <ul class="topic-list">
+                <li>Functions</li>
+                <li>Continuous functions on an interval</li>
+                <li>Second and higher order Derivatives</li>
+                <li>Composite and Inverse Functions</li>
+                <li>Logarithm</li>
+                <li>Exponential Function</li>
+                <li>Combinations</li>
+                <li>Conditional probability</li>
+                <li>Integral</li>
+                <li>Methods of integration</li>
+                <li>Applications of integral calculus</li>
+                <li>Components of the vector product</li>
+                <li>Planes and Lines</li>
               </ul>
             </div>
           </div>
           <a href="#contact" class="btn-gold-sm">Enroll via WhatsApp</a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DASHBOARD SECTION -->
-  <section id="dashboard" class="dashboard-section" style="padding: 80px 5%; background: rgba(0,0,0,0.3);">
-    <div class="section-header" data-aos="fade-up">
-      <h2>Academy <span class="gold-text">Dashboard</span></h2>
-      <p>Quick overview of your learning portal statistics & activity</p>
-      <div class="gold-line"></div>
-    </div>
-
-    <div class="dashboard-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto;">
-      <div class="glass-card" style="padding: 25px; border-radius: 15px; text-align: center; border: 1px solid rgba(212, 175, 55, 0.3);" data-aos="zoom-in" data-aos-delay="100">
-        <div style="font-size: 2.5rem; color: #d4af37; margin-bottom: 10px;"><i class="fas fa-book-open"></i></div>
-        <h3 style="font-size: 2rem; color: #fff; margin-bottom: 5px;">5</h3>
-        <p style="color: #bbb; font-size: 0.95rem;">Active Grade Tracks</p>
-      </div>
-
-      <div class="glass-card" style="padding: 25px; border-radius: 15px; text-align: center; border: 1px solid rgba(212, 175, 55, 0.3);" data-aos="zoom-in" data-aos-delay="200">
-        <div style="font-size: 2.5rem; color: #d4af37; margin-bottom: 10px;"><i class="fas fa-video"></i></div>
-        <h3 style="font-size: 2rem; color: #fff; margin-bottom: 5px;">120+</h3>
-        <p style="color: #bbb; font-size: 0.95rem;">Video Lessons Uploaded</p>
-      </div>
-
-      <div class="glass-card" style="padding: 25px; border-radius: 15px; text-align: center; border: 1px solid rgba(212, 175, 55, 0.3);" data-aos="zoom-in" data-aos-delay="300">
-        <div style="font-size: 2.5rem; color: #d4af37; margin-bottom: 10px;"><i class="fas fa-users"></i></div>
-        <h3 style="font-size: 2rem; color: #fff; margin-bottom: 5px;">1000+</h3>
-        <p style="color: #bbb; font-size: 0.95rem;">Enrolled Students</p>
-      </div>
-
-      <div class="glass-card" style="padding: 25px; border-radius: 15px; text-align: center; border: 1px solid rgba(212, 175, 55, 0.3);" data-aos="zoom-in" data-aos-delay="400">
-        <div style="font-size: 2.5rem; color: #d4af37; margin-bottom: 10px;"><i class="fas fa-star"></i></div>
-        <h3 style="font-size: 2rem; color: #fff; margin-bottom: 5px;">98%</h3>
-        <p style="color: #bbb; font-size: 0.95rem;">Student Satisfaction</p>
       </div>
     </div>
   </section>
@@ -437,6 +422,37 @@
     </div>
   </section>
 
+  <!-- OUR TEACHERS SECTION -->
+  <section id="teachers" class="teachers-section">
+    <div class="section-header" data-aos="fade-up">
+      <h2>Meet Our Expert <span class="gold-text">Teachers</span></h2>
+      <p>Find and filter expert educators for Grades 1 to 12 across Lebanon</p>
+      <div class="gold-line"></div>
+    </div>
+
+    <!-- Search & Filter Controls -->
+    <div class="teachers-controls" data-aos="fade-up">
+      <div class="search-box-wrapper">
+        <input type="text" id="teacherSearch" placeholder="Search by name, subject, or location (e.g. Saida)...">
+      </div>
+      <div>
+        <select id="gradeFilter">
+          <option value="all">All Grades (1-12)</option>
+          <option value="elementary">Elementary (1-5)</option>
+          <option value="intermediate">Intermediate (6-8)</option>
+          <option value="brevet">Brevet (Grade 9)</option>
+          <option value="seconde">Seconde (Grade 10)</option>
+          <option value="bac1">Bac 1 (Grade 11)</option>
+          <option value="terminale">Terminale (Grade 12)</option>
+        </select>
+      </div>
+    </div>
+
+   
+    <!-- Dynamic Grid where teachers load -->
+    <div class="teachers-grid compact-grid" id="teachersGrid"></div>
+  </section>
+
   <!-- CONTACT SECTION -->
   <section id="contact" class="contact-section">
     <div class="section-header" data-aos="fade-up">
@@ -464,6 +480,10 @@
             <option value="Bac 1 (Grade 11)">Bac 1 (Grade 11)</option>
             <option value="Terminale LS">Terminale LS (Grade 12)</option>
             <option value="Terminale SE">Terminale SE (Grade 12)</option>
+            <option value="Live Sessions">Live Session Grade 9</option>
+            <option value="Live Sessions">Live Session Grade 10</option>
+            <option value="Live Sessions">Live Session Grade 11</option>
+            <option value="Live Sessions">Live Session Grade 12</option>
           </select>
         </div>
         <div class="form-group">
@@ -478,37 +498,7 @@
     </div>
   </section>
 
-  <footer>
-    <p>&copy; 2026 Math avec Meryana. All rights reserved. Designed for Excellence.</p>
-  </footer>
-
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
-
-  <script>
-    const menuDropdownBtn = document.getElementById('menuDropdownBtn');
-    const dropdownMenu = document.getElementById('dropdownMenu');
-
-    menuDropdownBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      dropdownMenu.classList.toggle('show');
-    });
-
-    window.addEventListener('click', () => {
-      if (dropdownMenu.classList.contains('show')) {
-        dropdownMenu.classList.remove('show');
-      }
-    });
-
-    dropdownMenu.addEventListener('click', (e) => {
-      e.stopPropagation();
-    });
-
-    document.querySelectorAll('.dropdown-content a').forEach(link => {
-      link.addEventListener('click', () => {
-        dropdownMenu.classList.remove('show');
-      });
-    });
-  </script>
 </body>
 </html>
