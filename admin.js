@@ -185,4 +185,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-const API_URL = 'https://lebanese-online-academey.onrender.com/api/teachers';gi
+const API_URL = 'https://lebanese-online-academey.onrender.com/api/teachers';
