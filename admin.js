@@ -183,3 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadTeachersFromDB();
 });
+
+
+const API_URL = 'https://lebanese-online-academey.onrender.com/api/teachers';gi
