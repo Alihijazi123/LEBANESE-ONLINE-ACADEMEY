@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lebanese Online Academy | إعلان الأكاديمية</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* فيديو الخلفية */
+    #bgVideo {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: 1;
+      object-fit: cover;
+    }
+
+    /* طبقة تغميق خفيفة */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 2;
+    }
+
+    /* المحتوى فوق الفيديو */
+    .content {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-bottom: 25px;
+      color: #d4af37;
+      font-family: 'Cinzel', serif;
+      font-size: 3rem;
+      font-style: italic;
+      font-weight: 700;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.9);
+    }
+
+    .skip-btn {
+      display: inline-block;
+      background: #d4af37;
+      color: #000;
+      padding: 14px 35px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    }
+
+    .skip-btn:hover {
+      background: #e6c555;
+      transform: translateY(-2px);
+    }
+
+    /* زر تفعيل الصوت الشفاف للشاشة */
+    .sound-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 10;
+      background: rgba(212, 175, 55, 0.8);
+      color: #000;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      transition: 0.3s;
+    }
+    .sound-btn:hover {
+      background: #d4af37;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- زر لفتح الصوت إجباري في حال منعه المتصفح -->
+  <button class="sound-btn" id="soundToggle">
+    <i class="fas fa-volume-mute" id="soundIcon"></i> <span id="soundText">تفعيل الصوت</span>
+  </button>
+
+  <!-- الفيديو بدون muted -->
+  <video autoplay controls playsinline id="bgVideo">
+    <source src="./add-video.mp4" type="video/mp4">
+    متصفحك لا يدعم عرض الفيديو.
+  </video>
+
+  <div class="overlay"></div>
+
+  <div class="content">
+    <h2>Lebanese Online Academy</h2>
+    <div>
+      <a href="index.html" class="skip-btn">
+        Go To My Website <i class="fas fa-arrow-left"></i>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const video = document.getElementById('bgVideo');
+    const soundToggle = document.getElementById('soundToggle');
+    const soundIcon = document.getElementById('soundIcon');
+    const soundText = document.getElementById('soundText');
+
+    // محاولة تشغيل الصوت تلقائياً، وإذا منعه المتصفح، الزر بيحلها
+    video.muted = false;
+    video.play().catch(() => {
+      video.muted = true; // إذا المتصفح حظره، بنكتمه مؤقتاً لتشتغل الصفحة
+      soundText.innerText = "انقر لتفعيل الصوت";
+    });
+
+    // تفاعل زر الصوت
+    soundToggle.addEventListener('click', function() {
+      if (video.muted) {
+        video.muted = false;
+        soundIcon.className = "fas fa-volume-up";
+        soundText.innerText = "الصوت مَفعل";
+      } else {
+        video.muted = true;
+        soundIcon.className = "fas fa-volume-mute";
+        soundText.innerText = "تفعيل الصوت";
+      }
+    });
+
+    // الانتقال للصفحة الرئيسية عند نهاية الفيديو
+    video.addEventListener('ended', function() {
+      window.location.href = 'index.html';
+    });
+  </script>
+
+</body>
+</html>
