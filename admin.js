@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // إنشاء لوحة التحكم مع خانة لاختيار صورة من المعرض (Gallery)
+  // إنشاء لوحة التحكم
   function createAdminPanelUI() {
     if (document.getElementById('secretAdminPanel')) return;
 
@@ -61,16 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <option value="All Grades">All Grades</option>
           </select>
 
-          <!-- قائمة المناطق المنسدلة -->
-          <select id="newTeacherLocation" required style="padding: 10px; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff;">
-            <option value="" disabled selected>Select Location</option>
-            <option value="Saida">Saida</option>
-            <option value="Beirut">Beirut</option>
-            <option value="Tripoli">Tripoli</option>
-            <option value="Tyre">Tyre</option>
-            <option value="Nabatieh">Nabatieh</option>
-            <option value="Online / All Lebanon">Online / All Lebanon</option>
-          </select>
+          <!-- منطقة العمل (كتابة يدوية حرة) -->
+          <input type="text" id="newTeacherLocation" placeholder="Location (e.g. Saida, Beirut)" required style="padding: 10px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff;">
 
           <!-- رقم الهاتف -->
           <input type="text" id="newTeacherPhone" placeholder="Phone (+961 ...)" required style="padding: 10px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff;">
@@ -153,14 +145,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // الفلترة والبحث للزوار
+  // الفلترة والبحث الذكي للزوار (يدعم البحث بأي ترتيب للكلمات مثل "math saida")
   function filterTeachers() {
     const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
     const selectedGrade = gradeSelect ? gradeSelect.value : 'all';
 
+    // تقسيم كلمات البحث لتسهيل العثور على النتائج بغض النظر عن الترتيب
+    const searchWords = searchTerm ? searchTerm.split(/\s+/) : [];
+
     const filtered = allTeachers.filter(t => {
       const matchText = (t.name + ' ' + t.subject + ' ' + t.location + ' ' + t.grades).toLowerCase();
-      const matchesSearch = matchText.includes(searchTerm);
+      
+      // التحقق من أن كل الكلمات المدخلة موجودة ضمن بيانات الأستاذ
+      const matchesSearch = searchWords.every(word => matchText.includes(word));
+
       let matchesGrade = true;
       if (selectedGrade !== 'all') {
         matchesGrade = (t.grades || '').toLowerCase().includes(selectedGrade);
@@ -174,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (searchInput) searchInput.addEventListener('input', filterTeachers);
   if (gradeSelect) gradeSelect.addEventListener('change', filterTeachers);
 
-  // إضافة أستاذ جديد مع دعم رفع الصورة من المعرض (Gallery)
+  // إضافة أستاذ جديد
   async function handleAddTeacher(e) {
     e.preventDefault();
     
@@ -182,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
     formData.append('name', document.getElementById('newTeacherName').value.trim());
     formData.append('subject', document.getElementById('newTeacherSubject').value);
     formData.append('grades', document.getElementById('newTeacherGrades').value);
-    formData.append('location', document.getElementById('newTeacherLocation').value);
+    formData.append('location', document.getElementById('newTeacherLocation').value.trim());
     formData.append('phone', document.getElementById('newTeacherPhone').value.trim());
     
     const imageFile = document.getElementById('newTeacherImage').files[0];
@@ -193,13 +191,13 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const response = await fetch(API_URL, {
         method: 'POST',
-        body: formData // إرسال البيانات مباشرة كـ FormData لتشمل الصورة والملفات
+        body: formData
       });
 
       if (response.ok) {
         document.getElementById('addTeacherForm').reset();
         loadTeachersFromDB();
-        alert('Teacher added successfully with image!');
+        alert('Teacher added successfully!');
       } else {
         alert('Failed to add teacher.');
       }
