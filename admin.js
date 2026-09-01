@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const API_URL = 'http://localhost:5000/api/teachers';
+  const API_URL = 'https://lebanese-online-academey.onrender.com/api/teachers';
   const teachersGrid = document.getElementById('teachersGrid');
   const searchInput = document.getElementById('teacherSearch');
   const gradeSelect = document.getElementById('gradeFilter');
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // حذف أستاذ (للأدمن فقط)
   function attachDeleteEvents() {
-    document.querySelectorAll('.delete-teacher-btn').forEach(btn => {
+    document.querySelectorAll('.btn-delete-teacher').forEach(btn => {
       btn.addEventListener('click', async function() {
         const teacherId = this.getAttribute('data-id');
         if (confirm('Are you sure you want to delete this teacher?')) {
@@ -183,6 +183,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadTeachersFromDB();
 });
-
-
-const API_URL = 'https://lebanese-online-academey.onrender.com/api/teachers';
