@@ -1,506 +1,189 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Primary SEO Meta Tags (Clean Title & Hidden Keywords) -->
-  <title>Lebanese Online Academy | Math avec Meryana Youness</title>
-  <meta name="title" content="Lebanese Online Academy | Math avec Meryana Youness">
-  <meta name="description" content="أفضل منصة لتعلم الرياضيات أونلاين في لبنان مع الأستاذة مريانا يونس. نقدم شرح دروس رياضيات 9 و 10 و 11 و 12 (Brevet, Seconde, Bac 1, Terminale LS & SE). أفضل شرح رياضيات للصف 12 وجميع المراحل الدراسية في لبنان.">
-  <meta name="keywords" content="شرح دروس رياضيات 9و10و11و12, course math in lebanon 9 10 11 12, math grade 9, math grade 12, شرح رياضيات للصف 12, بدي أتعلم math online, معلمة math in lebanon, Lebanese Online Academy, Meryana Youness, دروس رياضيات أونلاين لبنان, Brevet math online, Terminale LS SE">
-  <meta name="author" content="Meryana Youness">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://lebanese-online-academy.com/">
-  <link rel="icon" type="image/png" href="./photo_2026-09-02_12-28-38.jpg">
-
-  <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://lebanese-online-academy.com/">
-  <meta property="og:title" content="Lebanese Online Academy | Math avec Meryana Youness">
-  <meta property="og:description" content="شرح دروس رياضيات 9و10و11و12 مع الأستاذة مريانا يونس. أفضل course math in lebanon للمراحل Brevet, Seconde, Bac 1, Terminale.">
-  <meta property="og:image" content="./images/photo_2026-08-29_00-56-35.jpg">
-
-  <!-- Twitter Meta Tags -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://lebanese-online-academy.com/">
-  <meta property="twitter:title" content="Lebanese Online Academy | Math avec Meryana Youness">
-  <meta property="twitter:description" content="شرح دروس رياضيات 9و10و11و12 مع الأستاذة مريانا يونس. أفضل course math in lebanon للمراحل Brevet, Seconde, Bac 1, Terminale.">
-  <meta property="twitter:image" content="./images/photo_2026-08-29_00-56-35.jpg">
-
-  <!-- Schema.org Structured Data for Google -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "name": "Lebanese Online Academy",
-    "alternateName": "Math avec Meryana Youness",
-    "url": "https://lebanese-online-academy.com/",
-    "logo": "./images/photo_2026-08-29_00-56-35.jpg",
-    "founder": {
-      "@type": "Person",
-      "name": "Meryana Youness"
-    },
-    "description": "منصة رائدة لتوفير شرح دروس رياضيات 9و10و11و12 في لبنان. أفضل course math in lebanon مع الأستاذة مريانا يونس لصفوف Brevet, Seconde, Bac 1, Terminale LS & SE.",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "LB"
-    },
-    "telephone": "+96181713254",
-    "email": "younesmeryana@gmail.com"
-  }
-  </script>
-
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Lebanese Online Academy | إعلان الأكاديمية</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
   <style>
-    .menu-dropdown-container { position: relative; padding-left: 50px; padding-bottom: 2px;}
-    .menu-dropdown-btn { display: flex; align-items: center; gap: 8px; cursor: pointer; }
-    .dropdown-content {
-      position: absolute; right: 0; top: 120%;
-      background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(12px);
-      min-width: 220px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.3);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.6); display: none; flex-direction: column; padding: 10px 0; z-index: 1000;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    .dropdown-content.show { display: flex; }
-    .dropdown-content a { color: #fff; padding: 12px 20px; text-decoration: none; font-size: 0.95rem; transition: all 0.2s ease; display: flex; align-items: center; gap: 10px; }
-    .dropdown-content a:hover { background: rgba(212, 175, 55, 0.15); color: #d4af37; padding-left: 25px; }
-    .dropdown-content a.dropdown-book { background: #d4af37; color: #000; font-weight: 600; margin: 8px 15px 0 15px; border-radius: 6px; justify-content: center; }
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* حاوية الفيديو للتوسيط التام */
+    .video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+      overflow: hidden;
+    }
+
+    #bgVideo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #000;
+    }
+
+    /* طبقة تغميق خفيفة جداً لتحسين وضوح الفيديو والخلفية */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.15);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* المحتوى فوق الفيديو */
+    .content {
+      position: fixed;
+      bottom: 25px;
+      left: 0;
+      width: 100%;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      pointer-events: none;
+    }
+
+    .content > * {
+      pointer-events: auto;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      color: #d4af37;
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-style: italic;
+      font-weight: 700;
+      text-shadow: 0 3px 15px rgba(0,0,0,0.9);
+    }
+
+    .skip-btn {
+      display: inline-block;
+      background: #d4af37;
+      color: #000;
+      padding: 12px 30px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.7);
+    }
+
+    .skip-btn:hover {
+      background: #e6c555;
+      transform: translateY(-2px);
+    }
+
+    /* زر الصوت الاختياري في حال رغب الزائر بسماع الصوت */
+    .sound-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 10;
+      background: rgba(212, 175, 55, 0.9);
+      color: #000;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      transition: 0.3s;
+    }
+    .sound-btn:hover {
+      background: #d4af37;
+    }
   </style>
 </head>
-
 <body>
 
-  <nav class="navbar" id="navbar">
-    <div class="logo">
-      <span class="logo-symbol">∑</span> Lebanese Online<span class="gold-text">Academy</span>
+  <!-- زر تفعيل الصوت (يسمح للزائر بفك الكتم بكليك واحدة متى أرد) -->
+  <button class="sound-btn" id="soundToggle">
+    <i class="fas fa-volume-mute" id="soundIcon"></i> <span id="soundText">تفعيل الصوت</span>
+  </button>
+
+  <!-- حاوية الفيديو (مكتوم لضمان عمله فوراً بدون توقف وبدون Lag) -->
+  <div class="video-container">
+    <video autoplay muted playsinline preload="auto" id="bgVideo">
+      <source src="./add-video.mp4" type="video/mp4">
+      متصفحك لا يدعم عرض الفيديو.
+    </video>
+  </div>
+
+  <div class="overlay"></div>
+
+  <div class="content">
+    <h2>Lebanese Online Academy</h2>
+    <div>
+      <a href="hero.html" class="skip-btn">
+        Go To My Website <i class="fas fa-arrow-left"></i>
+      </a>
     </div>
-    <div class="menu-dropdown-container">
-      <button class="btn-gold menu-dropdown-btn" id="menuDropdownBtn">
-        <i class="fas fa-bars"></i> Menu
-      </button>
-      <div class="dropdown-content" id="dropdownMenu">
-        <a href="#home"><i class="fas fa-home gold-text"></i> Home</a>
-        <a href="#about"><i class="fas fa-user-tie gold-text"></i> About</a>
-        <a href="#videos"><i class="fas fa-video gold-text"></i> Sample Videos</a>
-        <a href="#courses"><i class="fas fa-graduation-cap gold-text"></i> Courses</a>
-        <a href="#teachers"><i class="fas fa-chalkboard-teacher gold-text"></i> Teachers</a>
-        <a href="#contact"><i class="fas fa-envelope gold-text"></i> Contact</a>
-        <a href="#contact" class="dropdown-book"><i class="fab fa-whatsapp"></i> Book a Session</a>
-      </div>
-    </div>
-  </nav>
+  </div>
 
-  <section id="home" class="hero-section">
-    <div class="hero-overlay"></div>
-    <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
-      <span class="badge"><i class="fas fa-graduation-cap"></i> Premier Online Math Academy</span>
-      <h1>Master Mathematics with <span class="gold-text">Meryana Youness</span></h1>
-      <p>Interactive online Mathematics Courses for the Lebanese Curriculum. Simplified high school math tutoring for <span class="classes">Brevet, Seconde, Bac 1, and Terminale students</span>.</p>
-      <div class="hero-btns">
-        <a href="#courses" class="btn-gold">Explore Courses <i class="fas fa-arrow-right"></i></a>
-        <a href="#about" class="btn-outline">Meet Your Tutor</a>
-      </div>
-    </div>
-  </section>
+  <script>
+    const video = document.getElementById('bgVideo');
+    const soundToggle = document.getElementById('soundToggle');
+    const soundIcon = document.getElementById('soundIcon');
+    const soundText = document.getElementById('soundText');
 
-  <section id="about" class="about-section">
-    <div class="section-header" data-aos="fade-up">
-      <h2>About <span class="gold-text">Meryana Youness</span></h2>
-      <p>Dedicated to transforming math anxiety into academic excellence</p>
-      <div class="gold-line"></div>
-    </div>
+    // تفعيل تفاعل زر الصوت للزائر
+    soundToggle.addEventListener('click', function() {
+      if (video.muted) {
+        video.muted = false;
+        video.play();
+        soundIcon.className = "fas fa-volume-up";
+        soundText.innerText = "الصوت مَفعل";
+      } else {
+        video.muted = true;
+        soundIcon.className = "fas fa-volume-mute";
+        soundText.innerText = "تفعيل الصوت";
+      }
+    });
 
-    <div class="about-container">
-      <div class="about-text-card glass-card" data-aos="fade-right" data-aos-duration="800">
-        <h3>Empowering Lebanese Students to Math</h3>
-        <p>With a profound passion for teaching and a deep mastery of the Lebanese official curriculum, Meryana breaks down complex equations into clear, digestible, and logical steps. Whether you are aiming to secure high grades in your Brevet or conquer Terminale Calculus, structured support is tailored precisely to your needs.</p>
-        <div class="about-highlights">
-          <div><i class="fas fa-check-circle gold-text"></i> Official Brevet & Bac Preparation</div>
-          <div><i class="fas fa-check-circle gold-text"></i> Interactive Digital Whiteboards</div>
-          <div><i class="fas fa-check-circle gold-text"></i> Personalized 1-on-1 & Group Focus</div>
-        </div>
-      </div>
+    // الانتقال تلقائياً للصفحة الرئيسية عند نهاية الفيديو الفعلي
+    video.addEventListener('ended', function() {
+      window.location.href = 'index.html';
+    });
+    window.addEventListener('DOMContentLoaded', (event) => {
+  const bgVideo = document.getElementById('bgVideo');
+  bgVideo.play().catch(error => {
+    console.log("Autoplay prevented by browser, waiting for user interaction:", error);
+  });
+});
+  </script>
 
-      <div class="stats-grid" data-aos="fade-left" data-aos-duration="800">
-        <div class="stat-card glass-card">
-          <div class="stat-icon"><i class="fas fa-award"></i></div>
-          <h3 class="gold-text">26+</h3>
-          <p>Years Experience</p>
-        </div>
-        <div class="stat-card glass-card">
-          <div class="stat-icon"><i class="fas fa-user-graduate"></i></div>
-          <h3 class="gold-text">1000+</h3>
-          <p>Graduated Students</p>
-        </div>
-        <div class="stat-card glass-card">
-          <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
-          <h3 class="gold-text success-state">98</h3>
-          <p>Success Rate</p>
-        </div>
-        <div class="stat-card glass-card">
-          <div class="stat-icon"><i class="fas fa-laptop-code"></i></div>
-          <h3 class="gold-text interactive-stat">100</h3>
-          <p>Online Interactive</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VIDEOS SECTION -->
-  <section id="videos" class="videos-section" style="padding: 80px 5%; background: rgba(0,0,0,0.2);">
-    <div class="section-header" data-aos="fade-up">
-      <h2>Sample <span class="gold-text">Video Lessons</span></h2>
-      <p>Watch how complex equations and concepts are simplified step-by-step</p>
-      <div class="gold-line"></div>
-    </div>
-
-    <div class="videos-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
-      <div class="video-card glass-card" data-aos="zoom-in" data-aos-delay="100" style="overflow: hidden; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
-        <div class="video-wrapper" style="position: relative; width: 100%; aspect-ratio: 16/9; background: #111;">
-          <video width="100%" height="100%" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;">
-            <source src="./images/video_2026-08-29_02-37-57.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="card-content" style="padding: 20px;">
-          <span class="level-tag" style="background: var(--gold-color, #d4af37); color: #000; padding: 4px 10px; font-size: 0.8rem; border-radius: 4px; font-weight: 600;">Grade 9</span>
-          <h3 style="margin: 10px 0 5px; font-size: 1.2rem; color: #d4af37;">System of Two Equations Two Unknowns</h3>
-          <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 0;">A complete breakdown of official exam problems regarding exponential growth and integral applications.</p>
-        </div>
-      </div>
-
-      <div class="video-card glass-card" data-aos="zoom-in" data-aos-delay="200" style="overflow: hidden; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
-        <div class="video-wrapper" style="position: relative; width: 100%; aspect-ratio: 16/9; background: #111;">
-          <video width="100%" height="100%" controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;">
-            <source src="./images/video_2026-08-29_02-38-31.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="card-content" style="padding: 20px;">
-          <span class="level-tag" style="background: var(--gold-color, #d4af37); color: #000; padding: 4px 10px; font-size: 0.8rem; border-radius: 4px; font-weight: 600;">Grade 10</span>
-          <h3 style="margin: 10px 0 5px; font-size: 1.2rem; color: #d4af37;">Inequalities</h3>
-          <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 0;">Inequality problem and its Solution</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- COURSES SECTION -->
-  <section id="courses" class="courses-section">
-    <div class="section-header" data-aos="fade-up">
-      <h2>Offered <span class="gold-text">Courses</span></h2>
-      <p>Select your grade level to explore specialized Lebanese curriculum packages</p>
-      <div class="gold-line"></div>
-    </div>
-
-    <div class="filter-buttons" data-aos="fade-up">
-      <button class="filter-btn active" data-filter="all">All Levels</button>
-      <button class="filter-btn" data-filter="brevet">Brevet (Grade 9)</button>
-      <button class="filter-btn" data-filter="seconde">Seconde (Grade 10)</button>
-      <button class="filter-btn" data-filter="bac1">Bac 1 (Grade 11)</button>
-      <button class="filter-btn" data-filter="terminale SE">Terminale SE </button>
-      <button class="filter-btn" data-filter="terminale LS">Terminale LS</button>
-      <button class="filter-btn" data-filter="live sessions">Live Sessions </button>
-    </div>
-
-    <div class="courses-grid">
-      <div class="course-card glass-card" data-category="brevet" data-aos="zoom-in" data-aos-delay="100">
-        <div class="course-img-wrapper">
-          <img src="./images/photo_2026-08-29_00-56-35.jpg" alt="Brevet Math">
-          <span class="level-tag">Grade 9</span>
-        </div>
-        <div class="card-content">
-          <h3>Brevet Mathematics</h3>
-          <p class="card-desc">This complete online course includes video lessons plus practice exercises for official exam success.</p>
-          <div class="accordion">
-            <button class="accordion-header">
-              <span>lessons</span>
-              <span class="arrow">▼</span>
-            </button>
-            <div class="accordion-body">
-              <ul class="topic-list">
-                <li>We start with Geometry</li>
-                <li>Power, Fraction, Square roots</li>
-                <li>Proportion</li>
-                <li>Algebraic Expression</li>
-                <li>System of 2 equations of 2 unknowns</li>
-                <li>Inequality</li>
-                <li>Lines in a coordinate system</li>
-                <li>Trigonometry</li>
-              </ul>
-            </div>
-          </div>
-          <p class="card-p">⚡ Limited-Time Offer: Includes free access to all recorded Grade 9 Live Review Sessions upon enrollment!</p>
-          <a href="#contact" class="btn-gold-sm">Enroll via WhatsApp</a>
-        </div>
-      </div>
-
-      <div class="course-card glass-card" data-category="seconde" data-aos="zoom-in" data-aos-delay="200">
-        <div class="course-img-wrapper">
-          <img src="./images/photo_2026-08-29_00-56-47.jpg" alt="Seconde Math">
-          <span class="level-tag">Grade 10</span>
-        </div>
-        <div class="card-content">
-          <h3>Seconde Mathematics</h3>
-          <p class="card-desc">Master secondary mathematics with confidence through step-by-step video lessons designed to simplify advanced concepts.</p>
-          <div class="accordion">
-            <button class="accordion-header">
-              <span>lessons</span>
-              <span class="arrow">▼</span>
-            </button>
-            <div class="accordion-body">
-              <ul class="topic-list">
-                <li>Sets</li>
-                <li>Absolute value and intervals</li>
-                <li>Powers and Radicals</li>
-                <li>Order on R</li>
-                <li>Polynomial</li>
-                <li>Addition and Multiplication of a vector</li>
-                <li>Trigonometric circle and lines</li>
-                <li>Coordinate system</li>
-                <li>Scalar Product</li>
-                <li>Equation of a straight line</li>
-                <li>Function</li>
-                <li>First degree equation and Inequalities in one unknown</li>
-                <li>Statistics</li>
-                <li>Linear systems</li>
-                <li>Study of function</li>
-              </ul>
-              <p class="gift-text1"><i class="fas fa-gift" style="color: red;"></i> INCLUDED WITH YOUR ENROLLMENT</p>
-              <p><span class="gold-text">Bonus 1:</span> &nbsp; Video solutions for the exercises in "Building Up Mathematics" textbook.</p>
-              <br>
-              <p><span class="gold-text">Bonus 2:</span> &nbsp; Solutions for all unsolved samples in "Smart Plus" textbook.</p>
-            </div>
-          </div>
-          <a href="#contact" class="btn-gold-sm">Enroll via WhatsApp</a>
-        </div>
-      </div>
-
-      <div class="course-card glass-card" data-category="bac1" data-aos="zoom-in" data-aos-delay="300">
-        <div class="course-img-wrapper">
-          <img src="./images/photo_2026-08-29_00-56-50.jpg" alt="Bac 1 Math">
-          <span class="level-tag">Grade 11</span>
-        </div>
-        <div class="card-content">
-          <h3>Bac 1 (Scientific)</h3>
-          <p class="card-desc">Complete syllabus preparation targeting strong analytical mindset for official scientific tracks.</p>
-          <div class="accordion">
-            <button class="accordion-header">
-              <span>lessons</span>
-              <span class="arrow">▼</span>
-            </button>
-            <div class="accordion-body">
-              <ul class="topic-list">
-                <li>Equations and Polynomials of the second degree</li>
-                <li>Sign of the second degree trinomial Inequalities</li>
-                <li>Domain of Definition</li>
-                <li>Limits</li>
-                <li>Derivatives</li>
-                <li>Polynomial Functions</li>
-                <li>Rational and Irrational functions</li>
-                <li>Trigonometric equations</li>
-                <li>Equation of a circle</li>
-                <li>Counting / Permutations</li>
-                <li>Probability 1</li>
-                <li>Probability 2</li>
-                <li>Numerical Sequence</li>
-                <li>Complex Numbers</li>
-                <li>Antiderivative</li>
-              </ul>
-            </div>
-          </div>
-          <a href="#contact" class="btn-gold-sm">Enroll via WhatsApp</a>
-        </div>
-      </div>
-
-      <div class="course-card glass-card featured-card" data-category="terminale SE" data-aos="zoom-in" data-aos-delay="400">
-        <div class="course-img-wrapper">
-          <img src="./images/photo_2026-08-29_00-56-44.jpg" alt="Terminale Math">
-          <span class="level-tag gold-badge">Grade 12 Official Exam</span>
-        </div>
-        <div class="card-content">
-          <h3>Terminale SE</h3>
-          <p class="card-desc">Complete syllabus preparation targeting top official exam scores with intensive past-paper training.</p>
-          <div class="accordion">
-            <button class="accordion-header">
-              <span>Lessons</span>
-              <span class="arrow">▼</span>
-            </button>
-            <div class="accordion-body">
-              <ul class="topic-list">
-                <li>Distribution of 2 variables</li>
-                <li>Rational Functions</li>
-                <li>Derivatives</li>
-                <li>Composite and inverse function</li>
-                <li>Functions of Economics</li>
-                <li>Logarithm</li>
-                <li>Exponential function</li>
-                <li>Combinations</li>
-                <li>Conditional probability and total probability</li>
-              </ul>
-            </div>
-          </div>
-          <a href="#contact" class="btn-gold-sm">Enroll via WhatsApp</a>
-        </div>
-      </div>
-
-      <div class="course-card glass-card featured-card" data-category="terminale LS" data-aos="zoom-in" data-aos-delay="400">
-        <div class="course-img-wrapper">
-          <img src="./images/photo_2026-08-29_00-56-41.jpg" alt="Terminale Math">
-          <span class="level-tag gold-badge">Grade 12 Official Exam</span>
-        </div>
-        <div class="card-content">
-          <h3>Terminale LS</h3>
-          <p class="card-desc">Rigorous official exam preparation for General Sciences track with advanced calculus.</p>
-          <div class="accordion">
-            <button class="accordion-header">
-              <span>Lessons</span>
-              <span class="arrow">▼</span>
-            </button>
-            <div class="accordion-body">
-              <ul class="topic-list">
-                <li>Functions</li>
-                <li>Continuous functions on an interval</li>
-                <li>Second and higher order Derivatives</li>
-                <li>Composite and Inverse Functions</li>
-                <li>Logarithm</li>
-                <li>Exponential Function</li>
-                <li>Combinations</li>
-                <li>Conditional probability</li>
-                <li>Integral</li>
-                <li>Methods of integration</li>
-                <li>Applications of integral calculus</li>
-                <li>Components of the vector product</li>
-                <li>Planes and Lines</li>
-              </ul>
-            </div>
-          </div>
-          <a href="#contact" class="btn-gold-sm">Enroll via WhatsApp</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LIVE SESSIONS SECTION -->
-  <section class="live-sessions-section">
-    <h2>Live Online <span class="gold-text">Math Sessions</span></h2>
-    <p class="section-subtitle">Interactive classes tailored for your academic success.</p>
-    
-    <div class="pricing-grid">
-      <div class="price-card">
-        <h3>Brevet (Grade 9)</h3>
-        <div class="price">$10<span>/hr</span></div>
-        <p>Comprehensive curriculum review, exam preparation, and problem-solving practice.</p>
-        <a href="#contact" class="book-btn">Book a Session</a>
-      </div>
-
-      <div class="price-card featured">
-        <h3>Seconde (Grade 10)</h3>
-        <div class="price">$12<span>/hr</span></div>
-        <p>Advanced foundational math concepts, clear explanations, and continuous guidance.</p>
-        <a href="#contact" class="book-btn">Book a Session</a>
-      </div>
-      
-      <div class="price-card featured">
-        <h3>Bac1 (Grade 11)</h3>
-        <div class="price">$15<span>/hr</span></div>
-        <p>Mastering advanced functions, derivatives, trigonometry, and building a strong analytical mindset.</p>
-        <a href="#contact" class="book-btn">Book a Session</a>
-      </div>
-
-      <div class="price-card featured">
-        <h3>Terminale (LS,SE)</h3>
-        <div class="price">$20 <span>/hr</span></div>
-        <p>Rigorous official exam preparation, advanced calculus, complex numbers, and targeted strategies.</p>
-        <a href="#contact" class="book-btn">Book a Session</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- OUR TEACHERS SECTION -->
-  <section id="teachers" class="teachers-section">
-    <div class="section-header" data-aos="fade-up">
-      <h2>Meet Our Expert <span class="gold-text">Teachers</span></h2>
-      <p>Find and filter expert educators for Grades 1 to 12 across Lebanon</p>
-      <div class="gold-line"></div>
-    </div>
-
-    <!-- Search & Filter Controls -->
-    <div class="teachers-controls" data-aos="fade-up" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 25px;">
-      <div class="search-box-wrapper">
-        <input type="text" id="teacherSearch" placeholder="Search by name, subject, or location (e.g. Saida)..." style="padding: 10px 15px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; width: 300px;">
-      </div>
-      
-      <div>
-        <select id="gradeFilter" style="padding: 10px 15px; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; cursor: pointer;">
-          <option value="all">All Grades</option>
-          <option value="Grade 7">Grade 7</option>
-          <option value="Grade 8">Grade 8</option>
-          <option value="Grade 9">Grade 9 (Brevet)</option>
-          <option value="Grade 10">Grade 10</option>
-          <option value="Grade 11">Grade 11</option>
-          <option value="Grade 12">Grade 12 (Terminale)</option>
-        </select>
-      </div>
-    </div>
-   
-    <!-- Dynamic Grid where teachers load -->
-    <div class="teachers-grid compact-grid" id="teachersGrid"></div>
-  </section>
-
-  <!-- CONTACT SECTION -->
-  <section id="contact" class="contact-section">
-    <div class="section-header" data-aos="fade-up">
-      <h2>Book Your Session or <span class="gold-text">Order Course</span></h2>
-      <p>Direct integration with WhatsApp (+961 81 713 254) for instant scheduling</p>
-      <div class="gold-line"></div>
-    </div>
-
-    <div class="contact-container" data-aos="fade-up" data-aos-duration="900">
-      <form class="contact-form glass-card" id="whatsappForm">
-        <div class="form-group">
-          <label for="name">Full Name</label>
-          <input type="text" id="name" required placeholder="e.g. Karim Jaber">
-        </div>
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" required placeholder="your.email@email.com">
-        </div>
-        <div class="form-group">
-          <label for="level">Selected Grade Level / Course</label>
-          <select id="level" required>
-            <option value="" disabled selected>Select Package</option>
-            <option value="Brevet (Grade 9)">Brevet (Grade 9)</option>
-            <option value="Seconde (Grade 10)">Seconde (Grade 10)</option>
-            <option value="Bac 1 (Grade 11)">Bac 1 (Grade 11)</option>
-            <option value="Terminale LS">Terminale LS (Grade 12)</option>
-            <option value="Terminale SE">Terminale SE (Grade 12)</option>
-            <option value="Live Sessions">Live Session Grade 9</option>
-            <option value="Live Sessions">Live Session Grade 10</option>
-            <option value="Live Sessions">Live Session Grade 11</option>
-            <option value="Live Sessions">Live Session Grade 12</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="message">Message / Specific Inquiries</label>
-          <textarea id="message" rows="4" required placeholder="Tell me about your goals or schedule preference..."></textarea>
-        </div>
-        <button type="submit" class="btn-whatsapp btn-full">
-          <i class="fab fa-whatsapp"></i> Send Order via WhatsApp (+961 81 713 254)
-        </button>
-        <div id="formStatus" class="form-status"></div>
-      </form>
-    </div>
-  </section>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="script.js"></script>
-  <script src="admin.js"></script>
 </body>
-</html>>
+</html>
